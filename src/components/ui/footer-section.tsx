@@ -13,6 +13,7 @@ import {
 } from "./tooltip"
 import { Moon, Send, Sun } from "lucide-react"
 import { LinkedinIcon, InstagramIcon, TwitterIcon, FacebookIcon, WhatsappIcon } from "../BrandIcons"
+const logoImg = require("../../images/Coming Soon.png")
 
 export interface FooterdemoProps {
   onNavigate?: (page: string) => void;
@@ -68,10 +69,12 @@ function Footerdemo({ onNavigate }: FooterdemoProps) {
       <div className="container mx-auto px-4 py-14 md:px-6 lg:px-8 max-w-7xl">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="relative">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-700 to-blue-500 text-white flex items-center justify-center font-extrabold text-sm">
-                S
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src={logoImg}
+                alt="Skyweb IT Solutions Logo"
+                className="w-12 h-12 rounded-xl object-contain shadow-md"
+              />
               <span className="font-sans text-xl font-black text-slate-900 dark:text-white tracking-tight">
                 SKYWEB
               </span>

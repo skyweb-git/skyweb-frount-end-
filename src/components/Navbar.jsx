@@ -13,6 +13,7 @@ import {
   Images
 } from 'lucide-react';
 import { MenuBar } from './ui/glow-menu';
+import logoImg from '../images/Coming Soon.png';
 
 export default function Navbar({ activePage, setActivePage, onOpenQuoteModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -145,54 +146,22 @@ export default function Navbar({ activePage, setActivePage, onOpenQuoteModal }) 
           style={{
             cursor: 'pointer',
             display: 'flex',
-            alignItems: 'center',
-            gap: '10px'
+            alignItems: 'center'
           }}
+          title="Skyweb IT Solutions"
         >
-          <div
+          <img
+            src={logoImg}
+            alt="Skyweb IT Solutions Logo"
             style={{
-              width: '36px',
-              height: '36px',
+              width: '52px',
+              height: '52px',
               borderRadius: '10px',
-              background: 'linear-gradient(135deg, #1800ad 0%, #2a10d8 100%)',
-              color: '#ffffff',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: '800',
-              fontSize: '1.15rem',
-              boxShadow: '0 4px 12px rgba(24, 0, 173, 0.35)'
+              objectFit: 'contain',
+              boxShadow: '0 4px 12px rgba(24, 0, 173, 0.25)',
+              display: 'block'
             }}
-          >
-            S
-          </div>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
-            <span
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '1.35rem',
-                fontWeight: '800',
-                color: 'var(--text-heading)',
-                letterSpacing: '-0.03em'
-              }}
-            >
-              skyweb
-            </span>
-            <span
-              style={{
-                fontSize: '0.65rem',
-                fontFamily: 'var(--font-mono)',
-                color: '#1800ad',
-                backgroundColor: 'rgba(24, 0, 173, 0.08)',
-                border: '1px solid rgba(24, 0, 173, 0.25)',
-                padding: '2px 6px',
-                borderRadius: '4px',
-                fontWeight: '700'
-              }}
-            >
-              PVT LTD
-            </span>
-          </div>
+          />
         </div>
 
         {/* GLOW MENU BAR (DESKTOP) */}
