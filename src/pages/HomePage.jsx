@@ -16,6 +16,34 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
   // Live Architecture Mockup Tab State
   const [activeConsoleTab, setActiveConsoleTab] = useState('telemetry');
 
+  // Dynamic Telemetry & Hero Configuration (Configurable from Admin Portal)
+  const [telemetryConfig, setTelemetryConfig] = useState(() => {
+    try {
+      const saved = localStorage.getItem('skyweb_telemetry_config');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  React.useEffect(() => {
+    const handleUpdate = () => {
+      try {
+        const saved = localStorage.getItem('skyweb_telemetry_config');
+        if (saved) setTelemetryConfig(JSON.parse(saved));
+      } catch {
+        // ignore
+      }
+    };
+
+    window.addEventListener('skyweb_telemetry_updated', handleUpdate);
+    window.addEventListener('storage', handleUpdate);
+    return () => {
+      window.removeEventListener('skyweb_telemetry_updated', handleUpdate);
+      window.removeEventListener('storage', handleUpdate);
+    };
+  }, []);
+
   // Testimonial Carousel State & Auto-slide
   const [currentQuoteIdx, setCurrentQuoteIdx] = useState(0);
   const [isQuotePaused, setIsQuotePaused] = useState(false);
@@ -84,7 +112,7 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
               marginBottom: '24px'
             }}
           >
-            We engineer scalable software that{' '}
+            {telemetryConfig?.headline || 'We engineer scalable software that'}{' '}
             <span
               style={{
                 background: 'linear-gradient(135deg, #1800ad 0%, #2a10d8 60%, #4f46e5 100%)',
@@ -93,7 +121,7 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
                 display: 'inline-block'
               }}
             >
-              commands market share.
+              {telemetryConfig?.headlineAccent || 'commands market share.'}
             </span>
           </h1>
 
@@ -107,13 +135,13 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
               fontWeight: '400'
             }}
           >
-            At Skyweb Private Limited, we build creative, powerful, and scalable web solutions designed to help ambitious businesses grow online. We blend high-throughput MERN stack engineering, bespoke AI systems, and modern UI/UX design into digital platforms that make competitors obsolete.
+            {telemetryConfig?.subheadline || 'At Skyweb Private Limited, we build creative, powerful, and scalable web solutions designed to help ambitious businesses grow online. We blend high-throughput MERN stack engineering, bespoke AI systems, and modern UI/UX design into digital platforms that make competitors obsolete.'}
           </p>
 
           {/* Action CTAs */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', justifyContent: 'center', alignItems: 'center' }}>
             <button onClick={onOpenQuoteModal} className="btn-primary-blue">
-              <span>Initiate Project Scope</span>
+              <span>{telemetryConfig?.ctaPrimary || 'Initiate Project Scope'}</span>
               <ArrowRight size={16} />
             </button>
             <button
@@ -123,7 +151,7 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
               }}
               className="btn-secondary-light"
             >
-              <span>Explore Case Studies</span>
+              <span>{telemetryConfig?.ctaSecondary || 'Explore Case Studies'}</span>
             </button>
           </div>
         </div>
@@ -159,7 +187,7 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
               <div style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
               <div style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#10b981' }} />
               <span style={{ fontSize: '0.76rem', fontFamily: 'var(--font-mono)', color: '#64748b', marginLeft: '8px' }}>
-                skyweb-mesh // cluster-ap-south-1
+                skyweb-mesh // {telemetryConfig?.cluster || 'cluster-ap-south-1'}
               </span>
             </div>
 
@@ -188,7 +216,7 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
             {/* Status pill */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', color: '#059669', fontWeight: '700' }}>
               <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#059669' }} />
-              <span>SLA: 99.99% Operational</span>
+              <span>SLA: {telemetryConfig?.sla || '99.99'}% Operational</span>
             </div>
           </div>
 
@@ -200,9 +228,11 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
                   <div style={{ fontSize: '0.74rem', fontFamily: 'var(--font-mono)', color: '#64748b', marginBottom: '6px' }}>
                     AVG LATENCY
                   </div>
-                  <div style={{ fontSize: '2rem', fontWeight: '800', color: '#0f172a' }}>38ms</div>
+                  <div style={{ fontSize: '2rem', fontWeight: '800', color: '#0f172a' }}>
+                    {telemetryConfig?.avgLatency ? `${telemetryConfig.avgLatency}ms` : '38ms'}
+                  </div>
                   <div style={{ fontSize: '0.74rem', color: '#059669', fontWeight: '600', marginTop: '4px' }}>
-                    ↓ 62% faster than industry norm
+                    {telemetryConfig?.latencyTrend || '↓ 62% faster than industry norm'}
                   </div>
                 </div>
 
@@ -210,9 +240,11 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
                   <div style={{ fontSize: '0.74rem', fontFamily: 'var(--font-mono)', color: '#64748b', marginBottom: '6px' }}>
                     CONCURRENT SESSIONS
                   </div>
-                  <div style={{ fontSize: '2rem', fontWeight: '800', color: '#0f172a' }}>124,500+</div>
+                  <div style={{ fontSize: '2rem', fontWeight: '800', color: '#0f172a' }}>
+                    {telemetryConfig?.concurrentSessions || '124,500+'}
+                  </div>
                   <div style={{ fontSize: '0.74rem', color: '#1800ad', fontWeight: '600', marginTop: '4px' }}>
-                    Auto-scaled across AWS clusters
+                    {telemetryConfig?.sessionsLabel || 'Auto-scaled across AWS clusters'}
                   </div>
                 </div>
 
@@ -220,9 +252,11 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
                   <div style={{ fontSize: '0.74rem', fontFamily: 'var(--font-mono)', color: '#64748b', marginBottom: '6px' }}>
                     DATABASE QUERY TIME
                   </div>
-                  <div style={{ fontSize: '2rem', fontWeight: '800', color: '#0f172a' }}>4.2ms</div>
+                  <div style={{ fontSize: '2rem', fontWeight: '800', color: '#0f172a' }}>
+                    {telemetryConfig?.dbQueryTime ? `${telemetryConfig.dbQueryTime}ms` : '4.2ms'}
+                  </div>
                   <div style={{ fontSize: '0.74rem', color: '#059669', fontWeight: '600', marginTop: '4px' }}>
-                    Indexed MongoDB & PostgreSQL
+                    {telemetryConfig?.dbEngines || 'Indexed MongoDB & PostgreSQL'}
                   </div>
                 </div>
 
@@ -230,9 +264,11 @@ export default function HomePage({ setActivePage, onSelectProject, onOpenQuoteMo
                   <div style={{ fontSize: '0.74rem', fontFamily: 'var(--font-mono)', color: '#64748b', marginBottom: '6px' }}>
                     SECURITY AUDIT
                   </div>
-                  <div style={{ fontSize: '2rem', fontWeight: '800', color: '#059669' }}>PASS 100%</div>
+                  <div style={{ fontSize: '2rem', fontWeight: '800', color: '#059669' }}>
+                    {telemetryConfig?.securityScore || 'PASS 100%'}
+                  </div>
                   <div style={{ fontSize: '0.74rem', color: '#64748b', fontWeight: '600', marginTop: '4px' }}>
-                    OWASP Top 10 Compliant
+                    {telemetryConfig?.securityCompliance || 'OWASP Top 10 Compliant'}
                   </div>
                 </div>
               </div>
