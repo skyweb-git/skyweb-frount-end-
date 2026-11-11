@@ -85,12 +85,6 @@ export default function LeaderProfilePage({ onOpenModal }) {
                     alt={leader.name}
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-103"
                   />
-                  <div className="absolute top-3 left-3">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-black/60 backdrop-blur-md text-white shadow-xs">
-                      <span>{leader.flag}</span>
-                      <span>{leader.badge || leader.role}</span>
-                    </span>
-                  </div>
                 </div>
 
                 {/* Identity & Role */}

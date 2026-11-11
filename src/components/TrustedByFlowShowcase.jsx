@@ -1,67 +1,77 @@
 import React from 'react';
 
-export default function TrustedByFlowShowcase({ logos }) {
-  // Duplicate logos for seamless infinite loop
-  const flowLogos = [...logos, ...logos];
+const defaultLogos = [
+  { name: "ArtArtist", src: "/assets/client-showcase/1.png" },
+  { name: "Sanghi City", src: "/assets/client-showcase/2.png" },
+  { name: "Ambhuja by Maytri", src: "/assets/client-showcase/3.png" },
+  { name: "MasterBrush Art Foundation", src: "/assets/client-showcase/4.png" },
+  { name: "ServFex", src: "/assets/client-showcase/5.png" },
+  { name: "Yash Education", src: "/assets/client-showcase/6.png" },
+  { name: "Easy BG Remover", src: "/assets/client-showcase/7.png" },
+  { name: "Swayamkrushi", src: "/assets/client-showcase/8.png" },
+  { name: "Value Laden", src: "/assets/client-showcase/9.png" },
+  { name: "Akashya Labs and Tech", src: "/assets/client-showcase/10.png" },
+  { name: "Edion Royal Guesthouse", src: "/assets/client-showcase/edion-royal-guesthouse.png" },
+];
+
+export default function TrustedByFlowShowcase({ 
+  logos = defaultLogos, 
+  title,
+  className = "" 
+}) {
+  const activeLogos = (logos && logos.length > 0) ? logos : defaultLogos;
+  // Quadruple logos for mathematically seamless infinite marquee loop across all screen sizes
+  const flowLogos = [...activeLogos, ...activeLogos, ...activeLogos, ...activeLogos];
 
   return (
-    <section className="bg-black text-white py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-900 relative overflow-hidden" id="trusted-by">
-      {/* Ambient background glows */}
-      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#004AAD]/15 rounded-full blur-3xl pointer-events-none" />
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 text-center mx-auto">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-blue-500 tracking-tight font-['DM_Sans'] mb-4">
-            Trusted By
-          </h2>
-          <p className="text-base sm:text-lg text-blue-100/80 leading-relaxed font-normal max-w-2xl mx-auto">
-            Empowering innovative brands, digital platforms, and forward-thinking enterprises across diverse industries.
+    <section 
+      className={`w-full bg-white border-y border-slate-100 py-6 sm:py-8 overflow-hidden relative select-none ${className}`} 
+      id="trusted-by"
+      aria-label="Client and Partner Brand Showcase"
+    >
+      {title && (
+        <div className="max-w-7xl mx-auto px-4 text-center mb-5">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">
+            {title}
           </p>
         </div>
+      )}
 
-        {/* ================= SINGLE FLOW SLIDESHOW WITH EDGE MASKS ================= */}
-        <div className="relative w-full overflow-hidden py-4 group">
-          {/* Left Edge Gradient Fade Mask */}
-          <div 
-            className="absolute left-0 top-0 bottom-0 w-20 sm:w-44 bg-gradient-to-r from-black via-black/90 to-transparent z-20 pointer-events-none" 
-            aria-hidden="true"
-          />
+      {/* Left Edge Gradient Fade Mask */}
+      <div 
+        className="absolute left-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-r from-white via-white/85 to-transparent z-10 pointer-events-none" 
+        aria-hidden="true"
+      />
 
-          {/* Right Edge Gradient Fade Mask */}
-          <div 
-            className="absolute right-0 top-0 bottom-0 w-20 sm:w-44 bg-gradient-to-l from-black via-black/90 to-transparent z-20 pointer-events-none" 
-            aria-hidden="true"
-          />
+      {/* Right Edge Gradient Fade Mask */}
+      <div 
+        className="absolute right-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-l from-white via-white/85 to-transparent z-10 pointer-events-none" 
+        aria-hidden="true"
+      />
 
-          {/* Single Track: Flowing Left with Pause on Hover */}
-          <div className="overflow-hidden flex">
-            <div 
-              className="flex gap-4 sm:gap-6 items-center shrink-0 group-hover:[animation-play-state:paused]"
-              style={{
-                animation: 'marqueeLeft 35s linear infinite',
-                width: 'max-content'
-              }}
+      {/* Continuous Horizontal Marquee Track with Pause on Hover */}
+      <div className="overflow-hidden flex group">
+        <div 
+          className="flex gap-12 sm:gap-16 lg:gap-20 items-center shrink-0 group-hover:[animation-play-state:paused]"
+          style={{
+            animation: 'marqueeLeft 36s linear infinite',
+            width: 'max-content'
+          }}
+        >
+          {flowLogos.map((logo, idx) => (
+            <div
+              key={`logo-marquee-${idx}`}
+              className="flex items-center justify-center shrink-0 cursor-pointer h-10 sm:h-12 px-2 transition-transform duration-300 hover:scale-105"
+              title={logo.name}
             >
-              {flowLogos.map((logo, idx) => (
-                <div
-                  key={`flow-${idx}`}
-                  className="bg-white rounded-2xl p-4 sm:p-5 flex items-center justify-center border border-white/20 shadow-md hover:shadow-[0_12px_28px_-6px_rgba(59,130,246,0.35)] hover:border-blue-400 hover:scale-105 transition-all duration-300 group/card w-48 sm:w-60 h-24 sm:h-30 shrink-0 select-none cursor-pointer"
-                  title={logo.name}
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    className="max-h-12 sm:max-h-14 w-auto max-w-[82%] object-contain filter group-hover/card:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
+              <img
+                src={logo.src}
+                alt={logo.name}
+                className="max-h-8 sm:max-h-10 w-auto max-w-[130px] sm:max-w-[160px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                loading="lazy"
+              />
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

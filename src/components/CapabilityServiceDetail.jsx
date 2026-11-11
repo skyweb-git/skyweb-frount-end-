@@ -14,8 +14,18 @@ import {
   FolderGit2
 } from 'lucide-react';
 import { insightsArticles } from '../data/insightsArticles';
+import { getPillarBySlug, howSkyWebBuilds } from '../data/capabilityCatalog';
 
 export default function CapabilityServiceDetail({ serviceData, onOpenModal }) {
+  const catalogPillar = getPillarBySlug(serviceData.slug);
+  const offerings = (catalogPillar?.services || serviceData.offerings || []).map((item) => ({
+    title: item.title,
+    desc: item.desc,
+    capabilities: item.capabilities || item.tech || [],
+    implementation: item.implementation || null,
+    tech: item.tech || null,
+  }));
+  const buildSteps = howSkyWebBuilds;
   // Update document title and meta description dynamically
   useEffect(() => {
     const previousTitle = document.title;
@@ -171,45 +181,56 @@ export default function CapabilityServiceDetail({ serviceData, onOpenModal }) {
       )}
 
       {/* ================= 3. OUR SERVICES & TECHNICAL CAPABILITIES ================= */}
-      {serviceData.offerings && serviceData.offerings.length > 0 && (
+      {offerings.length > 0 && (
         <section id="offerings" className="py-20 px-6 sm:px-8 bg-white border-b border-slate-100">
           <div className="max-w-6xl mx-auto">
             <div className="max-w-3xl mb-14">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0f172a] leading-tight">
-                Our Services & Technical Offerings
+                Services & How We Implement Them
               </h2>
               <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
-                Comprehensive, production-grade technical capabilities tailored for organizations seeking architectural stability and velocity.
+                Clear offerings with the technology path SkyWeb uses to design, build, and ship each capability in production.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-              {serviceData.offerings.map((offering, idx) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+              {offerings.map((offering, idx) => (
                 <div
                   key={idx}
-                  className="p-7 rounded-2xl bg-[#fafbfc] hover:bg-white border border-slate-200/90 hover:border-[#004AAD]/40 transition-all duration-200 hover:shadow-lg flex flex-col justify-between group"
+                  className="p-6 sm:p-7 rounded-2xl bg-[#fafbfc] hover:bg-white border border-slate-200/90 hover:border-[#004AAD]/35 transition-all duration-200 flex flex-col gap-4"
                 >
-                  <div>
-                    <div className="h-10 w-10 rounded-xl bg-[#004AAD]/10 text-[#004AAD] flex items-center justify-center font-bold text-sm mb-5 group-hover:bg-[#004AAD] group-hover:text-white transition-colors duration-200">
-                      0{idx + 1}
+                  <div className="flex items-start gap-4">
+                    <div className="h-9 w-9 shrink-0 rounded-lg bg-[#004AAD]/10 text-[#004AAD] flex items-center justify-center font-bold text-xs">
+                      {String(idx + 1).padStart(2, '0')}
                     </div>
-
-                    <h3 className="text-lg font-bold text-[#0f172a] mb-2.5 group-hover:text-[#004AAD] transition-colors">
-                      {offering.title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
-                      {offering.desc}
-                    </p>
+                    <div className="min-w-0">
+                      <h3 className="text-base sm:text-lg font-bold text-[#0f172a] mb-1.5">
+                        {offering.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        {offering.desc}
+                      </p>
+                    </div>
                   </div>
 
-                  {offering.capabilities && (
-                    <div className="pt-4 border-t border-slate-200/70">
+                  {offering.implementation && (
+                    <div className="rounded-xl bg-white border border-slate-200/80 px-4 py-3">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#004AAD] block mb-1.5">
+                        How we implement
+                      </span>
+                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                        {offering.implementation}
+                      </p>
+                    </div>
+                  )}
+
+                  {(offering.tech || offering.capabilities)?.length > 0 && (
+                    <div className="pt-1">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
-                        Key Deliverables
+                        Tech we use
                       </span>
                       <div className="flex flex-wrap gap-1.5">
-                        {offering.capabilities.map((cap, cIdx) => (
+                        {(offering.tech || offering.capabilities).map((cap, cIdx) => (
                           <span
                             key={cIdx}
                             className="text-[11px] font-semibold text-slate-700 bg-white border border-slate-200 px-2 py-0.5 rounded-md"
@@ -227,24 +248,24 @@ export default function CapabilityServiceDetail({ serviceData, onOpenModal }) {
         </section>
       )}
 
-      {/* ================= 4. HOW SKYWEB APPROACHES THE PROBLEM (5 PHASES) ================= */}
-      {serviceData.approach && serviceData.approach.length > 0 && (
+      {/* ================= 4. HOW SKYWEB BUILDS ================= */}
+      {buildSteps.length > 0 && (
         <section className="py-20 px-6 sm:px-8 bg-[#090e17] text-white border-b border-slate-800">
           <div className="max-w-6xl mx-auto">
             <div className="max-w-3xl mb-14">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-                How SkyWeb Approaches the Problem
+                How SkyWeb Builds
               </h2>
               <p className="text-sm sm:text-base text-slate-300 mt-2 leading-relaxed">
-                A disciplined five-stage engineering process designed to eliminate uncertainty, ensure architectural integrity, and deliver dependable software on schedule.
+                One consistent five-stage engineering method across every capability — from discovery to production improvement.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-6">
-              {serviceData.approach.map((step, idx) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
+              {buildSteps.map((step, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/40 transition-all flex flex-col justify-between"
+                  className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/40 transition-all flex flex-col justify-between"
                 >
                   <div>
                     <span className="text-2xl font-black text-blue-400 font-mono block mb-2">
@@ -262,7 +283,7 @@ export default function CapabilityServiceDetail({ serviceData, onOpenModal }) {
                   </div>
                   <div className="pt-4 mt-4 border-t border-white/10 flex items-center gap-1.5 text-[11px] text-blue-300 font-semibold">
                     <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" />
-                    <span>Phase Milestone</span>
+                    <span>Build stage</span>
                   </div>
                 </div>
               ))}

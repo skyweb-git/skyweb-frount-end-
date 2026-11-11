@@ -73,7 +73,7 @@ export const subpagesData = {
         id: "mohammed-rabbani",
         name: "Mohammed Rabbani Pasha",
         role: "Founder & Director",
-        location: "🇮🇳 Hyderabad, India",
+        location: "Hyderabad, India",
         image: "/assets/rabbani-portrait.jpg",
         bio: "Founder & Director of SkyWeb IT Solutions. Leading company vision, core architectural engineering, and enterprise AI transformation globally.",
         linkedin: "https://www.linkedin.com/in/mohammed-rabbani-pasha-89b1b4419/",
@@ -83,7 +83,7 @@ export const subpagesData = {
         id: "tudigonda-vamshi",
         name: "Tudigonda Vamshi",
         role: "Co-Founder",
-        location: "🇮🇳 Hyderabad, India",
+        location: "Hyderabad, India",
         image: "/assets/vamshi-portrait.jpg",
         bio: "Co-Founder of SkyWeb. Directing technical operations, systems engineering, multi-cloud reliability, and high-velocity product delivery across enterprise platforms.",
         linkedin: "https://www.linkedin.com/in/tudigondavamshi/",
@@ -93,7 +93,7 @@ export const subpagesData = {
         id: "vikhyath-nimmalapudi",
         name: "Nimmalapudi Vikhyath",
         role: "Chief Financial Officer (CFO)",
-        location: "🇮🇳 Hyderabad, India",
+        location: "Hyderabad, India",
         image: "/assets/vikhyath-portrait.jpg",
         bio: "Chief Financial Officer at SkyWeb. Guiding fiscal discipline, multi-market capital allocation, commercial expansion, and fiduciary governance.",
         linkedin: "https://www.linkedin.com/in/vikhyath-nimmlapudi-7baa0626b/",
@@ -103,7 +103,7 @@ export const subpagesData = {
         id: "arpan-varma",
         name: "Arpan Varma",
         role: "COO & AI Engineer",
-        location: "🇮🇳 Hyderabad, India",
+        location: "Hyderabad, India",
         image: "/assets/arpan-portrait.jpg",
         bio: "Chief Operating Officer & AI Engineer at SkyWeb. Directing operational excellence, agile delivery frameworks, and building cutting-edge agentic AI workflows.",
         linkedin: "https://linkedin.com",
@@ -113,7 +113,7 @@ export const subpagesData = {
         id: "ch-kalyan",
         name: "CH Kalyan",
         role: "Backend Architecture & 3D Designer",
-        location: "🇮🇳 Hyderabad, India",
+        location: "Hyderabad, India",
         image: "/assets/kalyan-portrait.jpg",
         bio: "Leading backend architecture, microservices infrastructure, and high-fidelity 3D modeling and immersive asset design at SkyWeb IT Solutions.",
         linkedin: "https://linkedin.com",
@@ -123,7 +123,7 @@ export const subpagesData = {
         id: "muskaan-fathima",
         name: "Muskaan Fathima",
         role: "UI/UX Developer",
-        location: "🇮🇳 Hyderabad, India",
+        location: "Hyderabad, India",
         image: "/assets/muskaan-portrait.jpg",
         bio: "UI/UX Developer at SkyWeb. Shaping human-centered design systems, responsive web interfaces, and modern aesthetic frontend experiences.",
         linkedin: "https://www.linkedin.com/in/muskaan-fathima-630501357/",
@@ -133,7 +133,7 @@ export const subpagesData = {
         id: "uday-kumar-sangisetti",
         name: "Uday Kumar Sangisetti",
         role: "Client Management & Tech Consultant",
-        location: "🇮🇳 Hyderabad, India",
+        location: "Hyderabad, India",
         image: "/assets/uday-portrait.jpg",
         bio: "Overseeing client relationship management, technical consulting, and strategic solution delivery across domestic and regional enterprise projects.",
         linkedin: "https://linkedin.com",
@@ -143,7 +143,7 @@ export const subpagesData = {
         id: "ian-chenjerai",
         name: "Ian Tapiwa Chenjerai",
         role: "Foreign Client Management & International Project Head",
-        location: "🇿🇦 Cape Town, South Africa",
+        location: "Cape Town, South Africa",
         image: "/assets/ian-portrait.jpg",
         bio: "Heading SkyWeb's foreign client engagements and international project delivery, managing cross-border client accounts and global technology delivery teams.",
         linkedin: "https://www.linkedin.com/in/ian-chenjerai-a9b9a9384/",
@@ -183,81 +183,58 @@ export const subpagesData = {
     categoryHref: "/about",
     badge: "Identity & Mission",
     title: "Our Brand & Purpose",
-    subtitle: "Engineering Digital Possibilities. Bridging deep technical excellence with verifiable enterprise business utility.",
-    description: "The SkyWeb brand signifies relentless curiosity, architectural clarity, and unyielding dependability. We empower forward-thinking organizations to outpace market disruptions through technology.",
-    heroImage: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80",
+    subtitle: "High-Quality Technology & Clean UI Systems. Engineered by top developers and UI masters from IIT Madras, IIT Hyderabad, and seasoned industry leaders.",
+    description: "SkyWeb delivers enterprise-grade software, high-quality features, and pristine UI enhancements. Powered by elite engineering talent from IIT Madras and IIT Hyderabad alongside industry masters, we drive every project to a neat, clean, and flawless finale.",
+    heroImage: "/assets/logo.png",
     highlights: [
-      { metric: "Scale", label: "Engineered for Velocity" },
-      { metric: "Precision", label: "Zero-Compromise Code" },
-      { metric: "Integrity", label: "Transparent Governance" },
-      { metric: "Impact", label: "Measurable Business ROI" }
+      { metric: "IIT Alumni", label: "Core Devs from IIT Madras & IIT Hyd" },
+      { metric: "Clean UI", label: "Pixel-Perfect, Zero-Clutter UX" },
+      { metric: "Industry Masters", label: "Battle-Tested Enterprise Architects" },
+      { metric: "Flawless Finale", label: "High-Quality Delivery & Code Hygiene" }
     ],
     pillars: [
-      { title: "The SkyWeb Standard", desc: "Automated test coverage, code linting, and vulnerability scanning enforced at the CI/CD pipeline level." },
-      { title: "Outcome-Driven Delivery", desc: "We measure success not by lines of code written, but by business value unlocked and downtime eliminated." },
-      { title: "Radical Simplicity", desc: "Choosing clean, elegant architectural designs over unnecessary microservice sprawl." }
+      { 
+        title: "IIT Madras & IIT Hyderabad Engineering Pedigree", 
+        desc: "Our core development and UI design squads are led by top engineers and designers from IIT Madras and IIT Hyderabad, bringing academic rigor, algorithmic precision, and cutting-edge frontend architecture." 
+      },
+      { 
+        title: "Industry Masters & High-Quality Tech", 
+        desc: "Seasoned industry masters and systems architects oversee every engagement, translating complex enterprise logic into high-velocity, fault-tolerant features and resilient cloud infrastructure." 
+      },
+      { 
+        title: "Neat & Clean UI with Superior Enhancements", 
+        desc: "We reject bloated, cluttered interfaces. We engineer modern, accessible, and high-performance UI systems that provide users with intuitive navigation, fluid responsiveness, and aesthetic clarity." 
+      }
     ],
     article: {
-      headline: "Engineering Digital Possibilities: The Architecture of Our Identity",
+      headline: "Engineering Digital Possibilities: Precision Tech, Clean UI & Elite Talent",
       lead: "Our brand identity is built on clarity, technical substance, and genuine partnership. We reject empty jargon in favor of verifiable computational excellence.",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "SkyWeb brand standards translate into clean design systems and robust production software.",
+      image: "/assets/logo.png",
+      imageCaption: "SkyWeb official brand identity and corporate mark.",
       sections: [
         {
-          title: "Our Core Purpose",
-          content: "We exist to solve hard technical problems for ambitious enterprises. In an era saturated with superficial digital agencies, SkyWeb stands apart as a deep technology partner that tackles core backend systems, high-concurrency databases, AI pipelines, and resilient cloud architectures."
+          title: "High-Quality Technology & Feature Excellence",
+          content: "We deliver advanced technology and feature-rich software engineered for deterministic performance. From high-throughput distributed microservices to agentic AI workflows and dynamic web applications, our solutions eliminate technical friction and empower users with seamless, high-velocity digital capabilities."
         },
         {
-          title: "Visual & Design Philosophy",
-          content: "Our design language reflects our technical ethos: solid black backgrounds, vibrant electric blues, crisp typography, and high contrast. Every element is deliberate, functional, and devoid of distracting fluff, matching the clean code we deploy."
+          title: "Neat & Clean UI: Enhancing User Experience",
+          content: "A powerful backend requires an equally extraordinary frontend. Our design philosophy prioritizes a neat and clean UI, crisp typography, intuitive visual hierarchies, and frictionless workflows. We remove unnecessary visual noise to give users a distraction-free experience that maximizes operational efficiency and productivity."
+        },
+        {
+          title: "Elite Developers from IIT Madras, IIT Hyderabad & Industry Masters",
+          content: "At the heart of SkyWeb is our world-class engineering team: premier developers and UI/UX architects graduated from India's elite institutions—IIT Madras and IIT Hyderabad—working side-by-side with veteran industry masters. This powerful combination of foundational computer science rigor and decades of hands-on enterprise mastery guarantees that every client project reaches a pristine, production-ready finale."
+        },
+        {
+          title: "The Project Finale: Polished, Tested, and Production-Ready",
+          content: "We don't settle for half-baked prototypes. Every feature undergoes rigorous end-to-end testing, UI polish, security auditing, and performance benchmarking before release. Our clients receive robust, thoroughly documented, and clean codebases that scale effortlessly as their business expands."
         }
       ],
       takeaways: [
-        "Engineering Digital Possibilities: our governing motto",
-        "Deterministic software performance over marketing fluff",
-        "Design systems engineered for clarity, accessibility, and speed"
-      ]
-    }
-  },
-
-  "about/sustainability": {
-    category: "About Us",
-    categoryHref: "/about",
-    badge: "ESG & Green Tech",
-    title: "Sustainability & Green Cloud",
-    subtitle: "Architecting energy-efficient compute, low-carbon cloud deployments, and sustainable software ecosystems.",
-    description: "We optimize compute workloads, algorithmic complexity, and cloud region telemetry to minimize carbon footprints without sacrificing latency, security, or throughput.",
-    heroImage: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1200&q=80",
-    highlights: [
-      { metric: "40%", label: "Average Cloud Energy Reduction" },
-      { metric: "Net-Zero", label: "Cloud Operations Roadmap" },
-      { metric: "100%", label: "Renewable-First Cloud Regions" },
-      { metric: "Green SLA", label: "Energy Efficiency Guarantee" }
-    ],
-    pillars: [
-      { title: "Green Software Engineering", desc: "Algorithmic refactoring that slashes CPU cycles, memory footprints, and server thermal overhead." },
-      { title: "Carbon-Aware Autoscaling", desc: "Scheduling non-urgent batch and AI training workloads in cloud regions powered by renewable energy." },
-      { title: "Resource Optimization", desc: "Consolidating idle compute instances, utilizing spot instances, and auto-scaling to zero when idle." }
-    ],
-    article: {
-      headline: "Green Cloud Computing & Algorithmic Carbon Reduction",
-      lead: "Modern enterprise software must not only be computationally fast—it must be ecologically sustainable. SkyWeb embeds green engineering principles directly into cloud architecture.",
-      image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "Sustainable data centers and renewable-powered compute clusters engineered by SkyWeb.",
-      sections: [
-        {
-          title: "Algorithmic Efficiency as Green Engineering",
-          content: "Every unoptimized query and redundant microservice call burns server electricity. By refactoring O(N²) database queries, caching intelligently with distributed Redis clusters, and deploying serverless functions, we shrink server CPU overhead by up to 40%, directly reducing data center carbon output."
-        },
-        {
-          title: "Dynamic Carbon-Aware Scheduling",
-          content: "For compute-heavy workloads such as AI model fine-tuning and batch ETL processing, SkyWeb implements carbon-aware schedulers that monitor real-time grid telemetry and dispatch jobs to data center zones operating on solar or hydroelectric power."
-        }
-      ],
-      takeaways: [
-        "Up to 40% reduction in cloud server power consumption",
-        "Intelligent dynamic scheduling based on real-time grid carbon intensity",
-        "Sustainable software engineering certified across AWS and Azure environments"
+        "Core development and UI talent from IIT Madras and IIT Hyderabad",
+        "Guided by seasoned industry masters with deep enterprise experience",
+        "High-quality technology and feature sets tailored for enterprise utility",
+        "Neat, clean, and intuitive UI design engineered for speed and clarity",
+        "Flawless project finale with strict code hygiene and zero launch defects"
       ]
     }
   },
@@ -267,146 +244,154 @@ export const subpagesData = {
     categoryHref: "/about",
     badge: "Accolades",
     title: "Recognition & Awards",
-    subtitle: "Recognized internationally for transformative engineering, cloud architecture, and artificial intelligence delivery.",
-    description: "Our work has garnered recognition across industry analyst reports, enterprise technology summits, regional economic partnerships, and cloud partner councils.",
-    heroImage: "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?auto=format&fit=crop&w=1200&q=80",
+    subtitle: "Recognized nationally and internationally for transformative engineering, academic hackathons, and enterprise delivery.",
+    description: "Our work has garnered recognition across regional media, national daily press publications, industry analyst reports, enterprise technology conclaves, and university innovation hackathons.",
+    heroImage: "/assets/news/sakshi-codestars-2k26.png",
     highlights: [
+      { metric: "7+", label: "Verified National Press Features" },
       { metric: "#1", label: "Top Emerging AI & Cloud Partner" },
       { metric: "SOC 2 Type II", label: "Security & Privacy Certification" },
-      { metric: "ISO 27001", label: "Information Security Standard" },
-      { metric: "Gold", label: "Cloud Delivery Excellence Award" }
+      { metric: "ISO 27001", label: "Information Security Standard" }
     ],
     pillars: [
-      { title: "Industry Analyst Benchmarks", desc: "Consistently rated among leading boutique technology engineering providers for enterprise modernization." },
-      { title: "Customer Trust Scores", desc: "NPS score exceeding 78 across complex multi-year enterprise platform engagements." },
-      { title: "Academic & Tech Conclave Honors", desc: "Keynote contributor at international developer summits and tech innovation consortiums." }
+      { title: "National Newspaper & Media Recognition", desc: "Featured extensively across leading daily publications including Sakshi, Nava Telangana, Manam, Aadab Hyderabad, and Vijaya Kranthi for technological innovation." },
+      { title: "Academic & Tech Conclave Honors", desc: "Honored at national hackathons and collegiate conclaves including CodeStars 2K26, Audisankara CodeSprint, and Designathon Hyderabad." },
+      { title: "Audited Enterprise Compliance", desc: "Rigorous SOC 2 Type II and ISO 27001 certifications confirming enterprise-grade data security and governance." }
     ],
     article: {
-      headline: "International Accolades, Certifications & Industry Trust",
-      lead: "SkyWeb's dedication to zero-defect delivery and institutional security governance has received honors from technology bodies and security auditors worldwide.",
-      image: "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "Global recognition celebrating SkyWeb's systems architecture and cloud delivery excellence.",
+      headline: "National Accolades, Media Features & Audited Enterprise Trust",
+      lead: "SkyWeb's dedication to zero-defect delivery, academic talent incubation, and institutional engineering governance has received honors from technology conclaves, daily press, and security auditors worldwide.",
+      image: "/assets/news/sakshi-codestars-2k26.png",
+      imageCaption: "Sakshi Daily covering SkyWeb's CodeStars 2K26 National Hackathon & Innovation Summit.",
       sections: [
         {
-          title: "Audited Security Certifications",
-          content: "Enterprise trust starts with verification. SkyWeb holds SOC 2 Type II and ISO/IEC 27001 certifications, ensuring our deployment processes, database encryption mechanisms, and internal access controls satisfy the most stringent global enterprise audits."
+          title: "Prominent Press & Newspaper Coverage",
+          content: "SkyWeb's technology leadership and hackathon initiatives have been widely covered across leading state and national daily newspapers, including Sakshi, Nava Telangana, Manam, Aadab Hyderabad, and Vijaya Kranthi. These articles celebrate our commitment to engineering excellence, youth talent discovery, and enterprise software innovation."
         },
         {
-          title: "Cloud Provider Accolades",
-          content: "Recognized as an elite high-growth engineering partner by major cloud hyperscalers for architectural resilience, serverless innovation, and high-concurrency client implementations."
+          title: "Hackathons, Academic Conclaves & UI Excellence",
+          content: "From sponsoring CodeStars 2K26 to participating in the Audisankara CodeSprint and Designathon Hyderabad, SkyWeb actively collaborates with premier universities and tech conclaves to benchmark clean code, advanced UI systems, and high-velocity problem-solving."
+        },
+        {
+          title: "Audited Security & Operational Certifications",
+          content: "Enterprise trust starts with verification. SkyWeb maintains SOC 2 Type II and ISO/IEC 27001 certifications, ensuring our deployment processes, database encryption mechanisms, and internal access controls satisfy the most stringent global enterprise audits."
         }
       ],
       takeaways: [
-        "Certified SOC 2 Type II and ISO 27001 compliance",
-        "Consistent industry recognition across enterprise software summits",
-        "Proven client retention rate exceeding 94%"
+        "Extensive national press coverage across Sakshi, Nava Telangana, Manam, and Vijaya Kranthi",
+        "Keynote partner and sponsor for CodeStars 2K26 and Audisankara CodeSprint",
+        "Certified SOC 2 Type II and ISO 27001 enterprise compliance",
+        "Proven client retention rate exceeding 94% with zero launch defects"
       ]
-    }
+    },
+    newsSectionTitle: "Press Clippings & Newspaper Accolades",
+    newsSectionSubtitle: "Verified newspaper publications, media clippings, and tech conclave features celebrating SkyWeb's engineering accomplishments.",
+    newsItems: [
+      {
+        title: "CodeStars 2K26 National Hackathon & Innovation Summit",
+        publisher: "Sakshi Daily",
+        category: "Tech Conclave",
+        date: "October 2026",
+        image: "/assets/news/sakshi-codestars-2k26.png",
+        summary: "Prominent daily newspaper Sakshi features SkyWeb's corporate sponsorship, executive mentorship, and engineering leadership during the national CodeStars 2K26 hackathon."
+      },
+      {
+        title: "National CodeSprint Championship & Talent Discovery",
+        publisher: "Audisankara Tech Conclave",
+        category: "Academic Conclave",
+        date: "October 2026",
+        image: "/assets/news/audisankara-codesprint-2026.png",
+        summary: "Coverage of SkyWeb's premier coding championship and academic collaboration, recognizing emerging developers across distributed computing and algorithms."
+      },
+      {
+        title: "Designathon 2026 Hyderabad: UI/UX & Frontend Excellence",
+        publisher: "Design Conclave Hyderabad",
+        category: "UI/UX Honor",
+        date: "October 2026",
+        image: "/assets/news/designathon-2026-hyderabad.png",
+        summary: "Special feature highlighting SkyWeb's recognition in neat, clean UI architecture, human-centric design system benchmarks, and rapid frontend delivery."
+      },
+      {
+        title: "SkyWeb Pioneers High-Velocity Enterprise Software Hub",
+        publisher: "Nava Telangana Daily",
+        category: "Enterprise News",
+        date: "September 2026",
+        image: "/assets/news/navatelangana-codestars-2k26.jpg",
+        summary: "Nava Telangana daily press coverage reporting on SkyWeb's rapid scaling across enterprise cloud deployments, clean UI development, and institutional tech partnerships."
+      },
+      {
+        title: "Engineering Modern Cloud & Software Solutions",
+        publisher: "Manam News",
+        category: "Industry Press",
+        date: "September 2026",
+        image: "/assets/news/manam-codestars-2k26.png",
+        summary: "Manam features SkyWeb's leadership team and client success milestones across AI pipelines, scalable software development, and fault-tolerant architectures."
+      },
+      {
+        title: "Recognizing Technological Innovation in Enterprise Systems",
+        publisher: "Aadab Hyderabad",
+        category: "Regional Honor",
+        date: "September 2026",
+        image: "/assets/news/aadabhyderabad-codestars-2k26.png",
+        summary: "Press feature covering SkyWeb's engineering roots, rapid growth, and international client engagements across Dubai and South Africa."
+      },
+      {
+        title: "Vijaya Kranthi Honors SkyWeb's Software Engineering Pedigree",
+        publisher: "Vijaya Kranthi",
+        category: "Press Feature",
+        date: "August 2026",
+        image: "/assets/news/vijayakranthi-codestars-2k26.png",
+        summary: "Comprehensive reporting celebrating SkyWeb's research rigor, zero-defect delivery standards, and developer talent ecosystem."
+      }
+    ]
   },
 
   "about/customer-speak": {
     category: "About Us",
     categoryHref: "/about",
-    badge: "Client Testimonials & Trust",
-    title: "Customer Speak & Trust",
-    subtitle: "Real stories from Chief Technology Officers, product leaders, and enterprise executives who rely on SkyWeb.",
-    description: "Discover how SkyWeb engineers helped innovative consumer brands, digital platforms, educational foundations, and enterprise organizations scale with zero downtime.",
+    badge: "The Clients",
+    title: "The Clients",
+    subtitle: "What partners say about working with SkyWeb.",
+    description: "Client feedback from brands and teams who build with SkyWeb.",
     heroImage: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80",
-    highlights: [
-      { metric: "4.9 / 5", label: "Average Client Satisfaction" },
-      { metric: "94%", label: "Multi-Year Enterprise Retention" },
-      { metric: "8 Weeks", label: "Average MVP Delivery Velocity" },
-      { metric: "Zero", label: "Production Outages on Launch" }
-    ],
-    pillars: [
-      { title: "Direct Engineer Access", desc: "No frustrating intermediary layers. Enterprise clients collaborate directly with principal architects on Discord, Slack, and Jira." },
-      { title: "Rapid Turnaround", desc: "Transparent agile sprints with bi-weekly demonstrations and live test deployments." },
-      { title: "Scalable Infrastructure", desc: "Battle-tested cloud deployments designed to handle massive viral traffic surges seamlessly." }
-    ],
     testimonials: [
       {
         company: "ArtArtist",
         logo: "/assets/logos/logo-1.png",
-        clientName: "Uday Kumar Sangisetti",
-        role: "VP of Technology",
         imageUrl: "/assets/testimonials/card-2.png",
-        metric: "250K+ Active Artists",
-        rating: 5,
         quote: "SkyWeb architected a high-throughput digital gallery and creator marketplace that scaled past 250,000 active creators seamlessly. Their systems handled high-concurrency image uploads with flawless uptime."
       },
       {
         company: "Value Laden",
         logo: "/assets/logos/logo-9.png",
-        clientName: "Lavanaya Pasunoori",
-        role: "Chief Investment Officer",
         imageUrl: "/assets/testimonials/card-3.png",
-        metric: "99.999% Calculation Accuracy",
-        rating: 5,
         quote: "SkyWeb engineered our financial reporting engine and algorithmic advisory dashboard with unyielding accuracy, data privacy, and regulatory auditability."
       },
       {
         company: "Akashya Labs and Tech",
         logo: "/assets/logos/logo-10.png",
-        clientName: "Mr. Venkat Reddy",
-        role: "Founder & Chief Executive Officer",
         imageUrl: "/assets/testimonials/card-4.png",
-        metric: "Zero Launch-Day Defects",
-        rating: 5,
         quote: "A brilliant, agile team. They built our next-generation mobile platform on time, with strict adherence to security protocols and zero launch-day defects."
       },
       {
         company: "Yash Education",
         logo: "/assets/logos/logo-6.png",
-        clientName: "Yashwanth",
-        role: "Founder",
         imageUrl: "/assets/testimonials/card-5.png",
-        metric: "50,000 Concurrent Students",
-        rating: 5,
         quote: "SkyWeb's team delivered a secure, high-capacity learning management system that handles concurrent exams across thousands of students effortlessly."
       },
       {
         company: "ServFex",
         logo: "/assets/logos/logo-5.png",
-        clientName: "David Miller",
-        role: "Chief Operations Officer",
         imageUrl: "/assets/testimonials/card-6.png",
-        metric: "48% Faster Service Dispatch",
-        rating: 5,
         quote: "The field service management engine and real-time dispatch APIs engineered by SkyWeb reduced technician turnaround times by 48% across thousands of weekly service orders."
       },
       {
         company: "MasterBrush Art Foundation",
         logo: "/assets/logos/logo-4.png",
-        clientName: "Rohan Varma",
-        role: "Executive Director",
         imageUrl: "/assets/testimonials/card-1.png",
-        metric: "15,000+ Assets Preserved",
-        rating: 5,
         quote: "SkyWeb built our philanthropic archival and digital exhibition platform with exceptional UX, robust cloud backup systems, and seamless accessibility across devices."
-      },
-      {
-        company: "Sanghi City",
-        logo: "/assets/logos/logo-2.png",
-        clientName: "Vikram Sanghi",
-        role: "Director of Digital Infrastructure",
-        imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
-        metric: "100% Paperless Workflows",
-        rating: 5,
-        quote: "Their cloud infrastructure and automated workflows modernized our entire operational tracking and resident services platform. SkyWeb delivers institutional-grade software with remarkable execution speed."
       }
-    ],
-    article: {
-      headline: "Customer Speak & Trust: Real Stories from Enterprise Partners",
-      lead: "True software engineering quality is measured in client trust, system uptime, and measurable business outcomes under real-world scale.",
-      image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80",
-      imageCaption: "Executive reviews and live sprint demonstrations with enterprise technical leaders.",
-      sections: [
-        {
-          title: "Delivering Under Real-World Scale",
-          content: "Our clients span consumer platforms, luxury retailers, industrial service companies, academic foundations, and high-frequency AI tools. Across every project, SkyWeb provides architectural roadmaps that anticipate traffic surges, data anomalies, and growth constraints."
-        }
-      ]
-    }
+    ]
   },
 
   "about/partners": {
@@ -548,22 +533,74 @@ export const subpagesData = {
     ],
     newsItems: [
       {
+        title: "CodeStars 2K26 National Hackathon & Innovation Summit",
+        publisher: "Sakshi Daily",
+        category: "Tech Conclave",
+        date: "October 2026",
+        image: "/assets/news/sakshi-codestars-2k26.png",
+        summary: "Prominent daily newspaper Sakshi features SkyWeb's corporate sponsorship, executive mentorship, and engineering leadership during the national CodeStars 2K26 hackathon."
+      },
+      {
+        title: "National CodeSprint Championship & Talent Discovery",
+        publisher: "Audisankara Tech Conclave",
+        category: "Academic Conclave",
+        date: "October 2026",
+        image: "/assets/news/audisankara-codesprint-2026.png",
+        summary: "Coverage of SkyWeb's premier coding championship and academic collaboration, recognizing emerging developers across distributed computing and algorithms."
+      },
+      {
+        title: "Designathon 2026 Hyderabad: UI/UX & Frontend Excellence",
+        publisher: "Design Conclave Hyderabad",
+        category: "UI/UX Honor",
+        date: "October 2026",
+        image: "/assets/news/designathon-2026-hyderabad.png",
+        summary: "Special feature highlighting SkyWeb's recognition in neat, clean UI architecture, human-centric design system benchmarks, and rapid frontend delivery."
+      },
+      {
+        title: "SkyWeb Pioneers High-Velocity Enterprise Software Hub",
+        publisher: "Nava Telangana Daily",
+        category: "Enterprise News",
+        date: "September 2026",
+        image: "/assets/news/navatelangana-codestars-2k26.jpg",
+        summary: "Nava Telangana daily press coverage reporting on SkyWeb's rapid scaling across enterprise cloud deployments, clean UI development, and institutional tech partnerships."
+      },
+      {
+        title: "Engineering Modern Cloud & Software Solutions",
+        publisher: "Manam News",
+        category: "Industry Press",
+        date: "September 2026",
+        image: "/assets/news/manam-codestars-2k26.png",
+        summary: "Manam features SkyWeb's leadership team and client success milestones across AI pipelines, scalable software development, and fault-tolerant architectures."
+      },
+      {
+        title: "Recognizing Technological Innovation in Enterprise Systems",
+        publisher: "Aadab Hyderabad",
+        category: "Regional Honor",
+        date: "September 2026",
+        image: "/assets/news/aadabhyderabad-codestars-2k26.png",
+        summary: "Press feature covering SkyWeb's engineering roots, rapid growth, and international client engagements across Dubai and South Africa."
+      },
+      {
+        title: "Vijaya Kranthi Honors SkyWeb's Software Engineering Pedigree",
+        publisher: "Vijaya Kranthi",
+        category: "Press Feature",
+        date: "August 2026",
+        image: "/assets/news/vijayakranthi-codestars-2k26.png",
+        summary: "Comprehensive reporting celebrating SkyWeb's research rigor, zero-defect delivery standards, and developer talent ecosystem."
+      },
+      {
         date: "October 2026",
         title: "SkyWeb Expands Enterprise Cloud Practice Across South Africa and UAE",
+        publisher: "Global Press Wire",
         category: "Global Expansion",
         summary: "SkyWeb announces expanded delivery squads based in Cape Town and Dubai DIFC to meet surging demand for custom cloud platforms and AI systems."
       },
       {
         date: "September 2026",
         title: "SkyWeb Deploys 100th Enterprise Mission-Critical System",
+        publisher: "Corporate Dispatch",
         category: "Milestone",
         summary: "Celebrating a key operational landmark with over 100 production systems engineered across retail, fintech, education, and AI automation."
-      },
-      {
-        date: "August 2026",
-        title: "SkyWeb R&D Releases Whitepaper on Carbon-Aware Cloud Scheduling",
-        category: "Research",
-        summary: "Our engineering research division publishes comprehensive open-source benchmarks on slashing server CPU carbon output by 40%."
       }
     ],
     article: {

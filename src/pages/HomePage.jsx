@@ -7,20 +7,61 @@ import { provisions, industries, whyPillars, projects } from '../data/siteData';
 import TechStackShowcase from '../components/TechStackShowcase';
 import MethodologyProcessCards from '../components/MethodologyProcessCards';
 import TrustedByFlowShowcase from '../components/TrustedByFlowShowcase';
+import { DestinationCard } from '../components/ui/card-21';
 
 const capabilityIcons = [Server, Code2, Cpu, Cloud, Smartphone, ShieldCheck];
 
+const globalServedMarkets = [
+  {
+    id: "south-africa",
+    location: "South Africa",
+    stats: "Cape Town Hub • Enterprise FinTech & Cloud Architecture",
+    imageUrl: "https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: "saudi-arabia",
+    location: "Saudi Arabia",
+    stats: "Riyadh & GCC • Vision 2030 Enterprise Modernization",
+    imageUrl: "https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: "uk",
+    location: "United Kingdom",
+    stats: "London Corridor • Cross-Border SaaS, AI & FinTech",
+    imageUrl: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: "japan",
+    location: "Japan",
+    stats: "Tokyo Tech Hub • High-Concurrency Platforms & Systems",
+    imageUrl: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: "india",
+    location: "India",
+    stats: "Hyderabad R&D Core • Elite IIT Engineering & AI Squads",
+    imageUrl: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: "uae",
+    location: "UAE (Dubai)",
+    stats: "Dubai DIFC • High-Throughput Cloud & Banking Infrastructure",
+    imageUrl: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
+  }
+];
+
 const trustedLogos = [
-  { name: "ArtArtist", src: "/assets/logos/logo-1.png" },
-  { name: "Sanghi City", src: "/assets/logos/logo-2.png" },
-  { name: "Ambhuja by Maytri", src: "/assets/logos/logo-3.png" },
-  { name: "MasterBrush Art Foundation", src: "/assets/logos/logo-4.png" },
-  { name: "ServFex", src: "/assets/logos/logo-5.png" },
-  { name: "Yash Education", src: "/assets/logos/logo-6.png" },
-  { name: "Easy BG Remover", src: "/assets/logos/logo-7.png" },
-  { name: "Swayamkrushi", src: "/assets/logos/logo-8.png" },
-  { name: "Value Laden", src: "/assets/logos/logo-9.png" },
-  { name: "Akashya Labs and Tech", src: "/assets/logos/logo-10.png" },
+  { name: "ArtArtist", src: "/assets/client-showcase/1.png" },
+  { name: "Sanghi City", src: "/assets/client-showcase/2.png" },
+  { name: "Ambhuja by Maytri", src: "/assets/client-showcase/3.png" },
+  { name: "MasterBrush Art Foundation", src: "/assets/client-showcase/4.png" },
+  { name: "ServFex", src: "/assets/client-showcase/5.png" },
+  { name: "Yash Education", src: "/assets/client-showcase/6.png" },
+  { name: "Easy BG Remover", src: "/assets/client-showcase/7.png" },
+  { name: "Swayamkrushi", src: "/assets/client-showcase/8.png" },
+  { name: "Value Laden", src: "/assets/client-showcase/9.png" },
+  { name: "Akashya Labs and Tech", src: "/assets/client-showcase/10.png" },
+  { name: "Edion Royal Guesthouse", src: "/assets/client-showcase/edion-royal-guesthouse.png" },
 ];
 
 export default function HomePage({ onOpenModal }) {
@@ -77,7 +118,8 @@ export default function HomePage({ onOpenModal }) {
           {/* Left Column: Text & CTAs */}
           <div className="hero-text-col">
             <h1 className="hero-title">
-              Technology That Drives<br className="hidden sm:inline" />
+              Technology That Drives{" "}
+              <br className="hidden sm:inline" />
               Business <span className="hero-title-accent">Growth.</span>
             </h1>
 
@@ -141,11 +183,14 @@ export default function HomePage({ onOpenModal }) {
         </div>
       </section>
 
+      {/* ================= CLIENT LOGO TICKER SLIDESHOW (RIGHT BELOW HERO) ================= */}
+      <TrustedByFlowShowcase logos={trustedLogos} />
+
       {/* ================= TECHNOLOGY FOR BUSINESSES WITHOUT BOUNDARIES (EDITORIAL BENTO GRID - EXACT MATCH TO IMAGE) ================= */}
-      <section className="site-section bg-white pt-10 pb-20 px-6 sm:px-8 border-y border-slate-100" id="solutions">
+      <section className="site-section bg-white pt-6 pb-12 sm:pb-14 px-6 sm:px-8 border-y border-slate-100" id="solutions">
         <div className="max-w-7xl mx-auto">
           {/* Header Block matching Reference Image: Title on Left, Subtext on Right */}
-          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mb-10 sm:mb-14">
+          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mb-6 sm:mb-8">
             <div className="max-w-2xl">
               <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#004AAD] block mb-2 font-mono">
                 LATEST THINKING
@@ -171,19 +216,12 @@ export default function HomePage({ onOpenModal }) {
                 className="group relative overflow-hidden rounded-xl cursor-pointer border border-slate-200/80 bg-slate-950 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-[360px] sm:h-[420px] lg:h-[490px]"
               >
                 <img
-                  src="/assets/who-robotics.jpg"
+                  src="/assets/insights/1.png"
                   alt="Robotic arm in manufacturing facility representing AI Adoption"
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 via-40% to-black/20 group-hover:via-black/35 transition-colors duration-500" />
-                
-                {/* Category Badge matching image */}
-                <div className="relative z-10 p-5">
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-[3px] bg-black/60 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/90">
-                    BLOG | ARTIFICIAL INTELLIGENCE
-                  </span>
-                </div>
 
                 {/* Editorial Title */}
                 <div className="relative z-10 p-5 sm:p-6 mt-auto">
@@ -199,18 +237,12 @@ export default function HomePage({ onOpenModal }) {
                 className="group relative overflow-hidden rounded-xl cursor-pointer border border-slate-200/80 bg-slate-950 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-[250px] sm:h-[260px] lg:h-[250px]"
               >
                 <img
-                  src="/assets/who-cloud.jpg"
+                  src="/assets/insights/2.png"
                   alt="Intelligent cloud systems and 3D spheres"
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 via-45% to-black/20 group-hover:via-black/35 transition-colors duration-500" />
-                
-                <div className="relative z-10 p-5">
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-[3px] bg-black/60 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/90">
-                    BLOG | ARTIFICIAL INTELLIGENCE
-                  </span>
-                </div>
 
                 <div className="relative z-10 p-5 sm:p-6 mt-auto">
                   <h3 className="text-lg sm:text-xl font-bold text-white leading-snug tracking-tight font-['DM_Sans'] group-hover:text-sky-300 transition-colors duration-300">
@@ -228,18 +260,12 @@ export default function HomePage({ onOpenModal }) {
                 className="group relative overflow-hidden rounded-xl cursor-pointer border border-slate-200/80 bg-slate-950 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-[250px] sm:h-[260px] lg:h-[233px]"
               >
                 <img
-                  src="/assets/who-banking.jpg"
+                  src="/assets/insights/3.png"
                   alt="Open Banking and Fintech Innovation"
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 via-45% to-black/20 group-hover:via-black/35 transition-colors duration-500" />
-                
-                <div className="relative z-10 p-5">
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-[3px] bg-black/60 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/90">
-                    BLOG | BANKING AND FINANCIAL SERVICES
-                  </span>
-                </div>
 
                 <div className="relative z-10 p-5 sm:p-6 mt-auto">
                   <h3 className="text-lg sm:text-xl font-bold text-white leading-snug tracking-tight font-['DM_Sans'] group-hover:text-sky-300 transition-colors duration-300">
@@ -254,18 +280,12 @@ export default function HomePage({ onOpenModal }) {
                 className="group relative overflow-hidden rounded-xl cursor-pointer border border-slate-200/80 bg-slate-950 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-[250px] sm:h-[260px] lg:h-[234px]"
               >
                 <img
-                  src="/assets/who-3d.jpg"
+                  src="/assets/insights/4.png"
                   alt="Security by design 3D torus"
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 via-45% to-black/20 group-hover:via-black/35 transition-colors duration-500" />
-                
-                <div className="relative z-10 p-5">
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-[3px] bg-black/60 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/90">
-                    WHITEPAPER | CYBER SECURITY
-                  </span>
-                </div>
 
                 <div className="relative z-10 p-5 sm:p-6 mt-auto">
                   <h3 className="text-lg sm:text-xl font-bold text-white leading-snug tracking-tight font-['DM_Sans'] group-hover:text-sky-300 transition-colors duration-300">
@@ -280,18 +300,12 @@ export default function HomePage({ onOpenModal }) {
                 className="group relative overflow-hidden rounded-xl cursor-pointer border border-slate-200/80 bg-slate-950 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-[250px] sm:h-[260px] lg:h-[233px]"
               >
                 <img
-                  src="/assets/who-team.jpg"
+                  src="/assets/insights/5.png"
                   alt="Enterprise Communications and Global Networks"
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 via-45% to-black/20 group-hover:via-black/35 transition-colors duration-500" />
-                
-                <div className="relative z-10 p-5">
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-[3px] bg-black/60 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/90">
-                    WHITEPAPER | COMMUNICATIONS
-                  </span>
-                </div>
 
                 <div className="relative z-10 p-5 sm:p-6 mt-auto">
                   <h3 className="text-lg sm:text-xl font-bold text-white leading-snug tracking-tight font-['DM_Sans'] group-hover:text-sky-300 transition-colors duration-300">
@@ -309,18 +323,12 @@ export default function HomePage({ onOpenModal }) {
                 className="group relative overflow-hidden rounded-xl cursor-pointer border border-slate-200/80 bg-slate-950 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-[250px] sm:h-[260px] lg:h-[250px]"
               >
                 <img
-                  src="/assets/who-engineer.jpg"
+                  src="/assets/insights/6.png"
                   alt="Agentic AI for Oil and Gas Upstream Operations"
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 via-45% to-black/20 group-hover:via-black/35 transition-colors duration-500" />
-                
-                <div className="relative z-10 p-5">
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-[3px] bg-black/60 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/90">
-                    WHITEPAPER | ENERGY AND UTILITIES
-                  </span>
-                </div>
 
                 <div className="relative z-10 p-5 sm:p-6 mt-auto">
                   <h3 className="text-lg sm:text-xl font-bold text-white leading-snug tracking-tight font-['DM_Sans'] group-hover:text-sky-300 transition-colors duration-300">
@@ -335,18 +343,12 @@ export default function HomePage({ onOpenModal }) {
                 className="group relative overflow-hidden rounded-xl cursor-pointer border border-slate-200/80 bg-slate-950 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between h-[360px] sm:h-[420px] lg:h-[490px]"
               >
                 <img
-                  src="/assets/who-cubes.jpg"
+                  src="/assets/insights/7.png"
                   alt="Autonomous Enterprise Architecture and Modular Cubes"
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 via-40% to-black/20 group-hover:via-black/35 transition-colors duration-500" />
-                
-                <div className="relative z-10 p-5">
-                  <span className="inline-flex items-center px-2.5 py-1 rounded-[3px] bg-black/60 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/90">
-                    BLOG | ARTIFICIAL INTELLIGENCE
-                  </span>
-                </div>
 
                 <div className="relative z-10 p-5 sm:p-6 mt-auto">
                   <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug tracking-tight font-['DM_Sans'] group-hover:text-sky-300 transition-colors duration-300">
@@ -357,31 +359,35 @@ export default function HomePage({ onOpenModal }) {
             </div>
           </div>
 
-          {/* Bottom Enterprise Partnership Ribbon */}
-          <div className="mt-10 bg-[#fafafa] border border-slate-200/90 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#004AAD] mb-2">
-                <span>Hyderabad R&D Core</span>
-                <span className="text-slate-300">•</span>
-                <span>Dubai Hub (DIFC)</span>
-                <span className="text-slate-300">•</span>
-                <span>Cape Town</span>
+          {/* Countries We Serve - Powered by DestinationCard (card-21) */}
+          <div className="mt-14 sm:mt-16 pt-10 border-t border-slate-100" id="global-corridors">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#004AAD]">Global Delivery Corridors</span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-['DM_Sans'] mt-1">
+                  Countries &amp; Enterprise Markets We Serve
+                </h3>
               </div>
-              <h4 className="text-xl sm:text-2xl font-bold text-slate-900 mb-1 font-['DM_Sans']">
-                Technology Partner for Businesses Ready to <span className="accent-text">Grow</span>
-              </h4>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Whether modernizing core platforms, automating complex workflows, or expanding into international markets, SkyWeb provides the engineering capabilities and technology infrastructure to help you move forward.
+              <p className="text-xs sm:text-sm text-slate-500 max-w-md">
+                Delivering 24/7 mission-critical software, dedicated IIT engineering squads, and scalable cloud infrastructure across prime international tech corridors.
               </p>
             </div>
 
-            <button 
-              type="button"
-              className="px-8 py-3.5 rounded-xl bg-[#004AAD] hover:bg-[#003B8A] text-white text-sm font-bold shadow-md hover:shadow-lg transition-all whitespace-nowrap cursor-pointer flex-shrink-0" 
-              onClick={onOpenModal}
-            >
-              Work With Us
-            </button>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {globalServedMarkets.map((market) => (
+                <div key={market.id} className="w-full h-[380px] sm:h-[420px]">
+                  <DestinationCard
+                    imageUrl={market.imageUrl}
+                    location={market.location}
+                    stats={market.stats}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onOpenModal();
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -525,10 +531,10 @@ export default function HomePage({ onOpenModal }) {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end min-h-[500px] lg:min-h-[560px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end min-h-[380px] lg:min-h-[440px]">
             
             {/* Left Content Column (7 cols) */}
-            <div className="lg:col-span-7 py-14 sm:py-16 lg:py-20 flex flex-col justify-center">
+            <div className="lg:col-span-7 py-8 sm:py-10 lg:py-12 flex flex-col justify-center">
 
               {/* Bold Big Headline */}
               <h2 className="text-3xl sm:text-5xl lg:text-[54px] xl:text-[58px] font-extrabold text-white tracking-tight font-['DM_Sans'] leading-[1.08] mb-6 max-w-2xl">
@@ -606,7 +612,7 @@ export default function HomePage({ onOpenModal }) {
       {/* ================= TECH STACK ================= */}
       <section className="site-section bg-white" id="tech-stack">
         <div className="section-container">
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#004AAD] bg-blue-50 border border-blue-200/80 mb-3">
               TECHNOLOGY FOUNDATION
             </span>
@@ -667,10 +673,10 @@ export default function HomePage({ onOpenModal }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
             {projects.map((proj, idx) => (
               <CardContainer key={idx} containerClassName="py-2 w-full" className="w-full">
-                <CardBody className="bg-white relative group/card border border-slate-200/90 hover:border-[#004AAD]/40 w-full h-auto rounded-2xl p-6 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_rgba(0, 74, 173,0.12)] flex flex-col justify-between">
+                <CardBody className="bg-white relative group/card border border-slate-200/90 hover:border-[#004AAD]/40 w-full h-auto rounded-2xl p-6 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_rgba(0,74,173,0.12)] flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <CardItem
@@ -773,7 +779,7 @@ export default function HomePage({ onOpenModal }) {
       {/* ================= INSIGHTS & TECHNOLOGY ARTICLES SECTION ================= */}
       <section className="site-section bg-subtle" id="insights">
         <div className="section-container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div className="max-w-2xl">
               <span className="section-eyebrow">TECHNOLOGY FOR BUSINESSES WITHOUT BOUNDARIES</span>
               <h2 className="section-headline">
@@ -859,9 +865,6 @@ export default function HomePage({ onOpenModal }) {
           </div>
         </div>
       </section>
-
-      {/* ================= TRUSTED BY FLOW SLIDESHOW ================= */}
-      <TrustedByFlowShowcase logos={trustedLogos} />
     </>
   );
 }

@@ -318,26 +318,6 @@ export default function OrbitingCirclesGlobeDemo({
         );
       })}
 
-      {/* Floating active tech inspection badge / live status bar */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 pointer-events-none z-30 transition-all">
-        {hoveredTech ? (
-          <div className="bg-white/95 backdrop-blur-md border border-slate-200/90 px-4 py-1.5 rounded-full shadow-lg flex items-center gap-2.5 transition-all">
-            <span className="w-2 h-2 rounded-full bg-[#004AAD] animate-ping" />
-            <span className="text-xs font-bold text-slate-900">{hoveredTech.name}</span>
-            <span className="text-[11px] text-slate-500 font-medium">| {hoveredTech.category}</span>
-            <span className="text-[10px] font-semibold uppercase tracking-wider bg-blue-50 text-[#004AAD] px-2 py-0.5 rounded-full border border-blue-100">
-              {hoveredTech.tag}
-            </span>
-          </div>
-        ) : (
-          <div className="bg-white/85 backdrop-blur-md border border-slate-200/80 px-4 py-1.5 rounded-full shadow-sm flex items-center gap-2 text-[11px] sm:text-xs text-slate-500 transition-all">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span className="font-semibold text-slate-700">20 Technologies Active</span>
-            <span className="text-slate-300">•</span>
-            <span className="hidden sm:inline text-slate-500">Hover any node to inspect framework</span>
-          </div>
-        )}
-      </div>
     </div>
   );
 }

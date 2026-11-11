@@ -164,12 +164,18 @@ export function ClientTestimonialCard({
   testimonial: ClientTestimonialItem;
   className?: string;
 }) {
-  const name = testimonial.clientName || testimonial.name || "Client Partner";
-  const title = testimonial.role || testimonial.title || "Enterprise Leader";
   const quote = testimonial.quote || testimonial.description || "";
+  const company = testimonial.company || "";
   const imageUrl =
     testimonial.imageUrl ||
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80";
+
+  const socials = [
+    { href: testimonial.githubUrl, label: "GitHub", Icon: Github },
+    { href: testimonial.twitterUrl, label: "Twitter", Icon: Twitter },
+    { href: testimonial.youtubeUrl, label: "YouTube", Icon: Youtube },
+    { href: testimonial.linkedinUrl, label: "LinkedIn", Icon: Linkedin },
+  ].filter((s) => Boolean(s.href));
 
   return (
     <div
@@ -178,137 +184,50 @@ export function ClientTestimonialCard({
         className
       )}
     >
-      {/* Avatar Container: Wider and taller to showcase the full image */}
-      <div className="w-full sm:w-[50%] lg:w-[52%] xl:w-[52%] min-h-[300px] sm:min-h-[380px] lg:min-h-[410px] rounded-[28px] overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:bg-neutral-800 shrink-0 shadow-md border border-slate-200/80 relative z-0 flex items-end justify-center p-2 sm:p-3">
+      <div className="w-full sm:w-[50%] lg:w-[52%] xl:w-[52%] min-h-[280px] sm:min-h-[360px] lg:min-h-[390px] rounded-[28px] overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:bg-neutral-800 shrink-0 shadow-md border border-slate-200/80 relative z-0 flex items-end justify-center p-2 sm:p-3">
         <Image
           src={imageUrl}
-          alt={name}
+          alt={company || "Client"}
           className="w-full h-full object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
-          style={{ objectPosition: 'center bottom' }}
+          style={{ objectPosition: "center bottom" }}
           draggable={false}
         />
-        {/* Company Logo Badge: only show if image does NOT already embed the logo */}
         {testimonial.logo && !imageUrl.includes("/assets/testimonials/") && (
           <div className="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-xl shadow-xs border border-slate-200/90 flex items-center justify-center h-8 z-10">
             <Image
               src={testimonial.logo}
-              alt={testimonial.company || "Partner Logo"}
+              alt={company || "Partner Logo"}
               className="max-h-5 max-w-[85px] object-contain"
             />
           </div>
         )}
       </div>
 
-      {/* Floating Card Container */}
-      <div className="bg-white dark:bg-[#18181b] rounded-[26px] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)] group-hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.14)] p-6 sm:p-7 sm:-ml-4 md:-ml-5 mt-[-16px] sm:mt-0 z-10 flex-1 border border-slate-100 dark:border-neutral-800 flex flex-col justify-between transition-all duration-300">
-        <div>
-          {/* Top Header: Metric & Rating */}
-          <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-            {testimonial.metric ? (
-              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#004AAD]/10 text-[#004AAD] border border-[#004AAD]/20 inline-flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#004AAD] animate-pulse" />
-                {testimonial.metric}
-              </span>
-            ) : (
-              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 text-slate-700">
-                Verified Outcome
-              </span>
-            )}
-
-            {/* 5-Star Rating */}
-            <div className="flex items-center gap-0.5">
-              {[...Array(testimonial.rating || 5)].map((_, sIdx) => (
-                <svg
-                  key={sIdx}
-                  className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                >
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-              ))}
-            </div>
-          </div>
-
-          {/* Name & Title */}
-          <div className="mb-3">
-            <h3 className="text-xl sm:text-[22px] font-extrabold text-[#0f172a] dark:text-white font-['DM_Sans'] tracking-tight mb-1">
-              {name}
-            </h3>
-            <p className="text-xs sm:text-[13px] font-semibold text-slate-500 dark:text-slate-400">
-              {title}
-              {testimonial.company && (
-                <>
-                  {" "}• <span className="text-[#004AAD] font-bold">{testimonial.company}</span>
-                </>
-              )}
-            </p>
-          </div>
-
-          {/* Quote Description */}
-          <p className="text-slate-700 dark:text-gray-200 text-sm leading-relaxed mb-6 font-normal">
-            "{quote}"
+      <div className="bg-white dark:bg-[#18181b] rounded-[26px] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)] group-hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.14)] p-6 sm:p-7 sm:-ml-4 md:-ml-5 mt-[-16px] sm:mt-0 z-10 flex-1 border border-slate-100 dark:border-neutral-800 flex flex-col justify-center transition-all duration-300">
+        {company && (
+          <p className="text-xs font-semibold tracking-wide text-slate-500 mb-3">
+            {company}
           </p>
-        </div>
-
-        {/* Footer: Circular Dark Social Buttons & Verified Tag */}
-        <div className="pt-4 border-t border-slate-100 dark:border-neutral-800/80 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center space-x-2">
-            <Link
-              href={testimonial.githubUrl || "https://github.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 bg-[#111827] dark:bg-gray-100 rounded-full flex items-center justify-center transition-all hover:bg-[#004AAD] hover:scale-105 cursor-pointer shadow-xs text-white dark:text-gray-900"
-              aria-label="GitHub"
-            >
-              <Github className="w-4 h-4 text-white dark:text-gray-900" />
-            </Link>
-            <Link
-              href={testimonial.twitterUrl || "https://twitter.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 bg-[#111827] dark:bg-gray-100 rounded-full flex items-center justify-center transition-all hover:bg-[#004AAD] hover:scale-105 cursor-pointer shadow-xs text-white dark:text-gray-900"
-              aria-label="Twitter"
-            >
-              <Twitter className="w-4 h-4 text-white dark:text-gray-900" />
-            </Link>
-            <Link
-              href={testimonial.youtubeUrl || "https://youtube.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 bg-[#111827] dark:bg-gray-100 rounded-full flex items-center justify-center transition-all hover:bg-[#004AAD] hover:scale-105 cursor-pointer shadow-xs text-white dark:text-gray-900"
-              aria-label="YouTube"
-            >
-              <Youtube className="w-4 h-4 text-white dark:text-gray-900" />
-            </Link>
-            <Link
-              href={testimonial.linkedinUrl || "https://linkedin.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 bg-[#111827] dark:bg-gray-100 rounded-full flex items-center justify-center transition-all hover:bg-[#004AAD] hover:scale-105 cursor-pointer shadow-xs text-white dark:text-gray-900"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-4 h-4 text-white dark:text-gray-900" />
-            </Link>
+        )}
+        <p className="text-slate-700 dark:text-gray-200 text-sm sm:text-[15px] leading-relaxed font-normal">
+          “{quote}”
+        </p>
+        {socials.length > 0 && (
+          <div className="pt-5 mt-5 border-t border-slate-100 dark:border-neutral-800/80 flex items-center space-x-2">
+            {socials.map(({ href, label, Icon }) => (
+              <Link
+                key={label}
+                href={href as string}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 bg-[#111827] dark:bg-gray-100 rounded-full flex items-center justify-center transition-all hover:bg-[#004AAD] hover:scale-105 cursor-pointer shadow-xs text-white dark:text-gray-900"
+                aria-label={label}
+              >
+                <Icon className="w-4 h-4 text-white dark:text-gray-900" />
+              </Link>
+            ))}
           </div>
-
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
-            <svg
-              className="w-3.5 h-3.5 text-emerald-600"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg>
-            <span>Verified</span>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

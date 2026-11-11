@@ -14,7 +14,7 @@ export const insightsArticles = [
       name: "SkyWeb Technology Practice",
       role: "Software Architecture & Digital Engineering Group"
     },
-    image: "/assets/laptop.jpg",
+    image: "/assets/insights/2.png",
     imageAlt: "A developer workstation showcasing software design, architecture, and code engineering",
     imageCaption: "Enterprise software architecture prioritizes structural modularity, code maintainability, and end-to-end operational resilience.",
     executiveTakeaways: [
@@ -96,7 +96,7 @@ export const insightsArticles = [
       name: "SkyWeb Technology Practice",
       role: "Applied Intelligence & Cognitive Systems Group"
     },
-    image: "/assets/nav-ai.jpg",
+    image: "/assets/insights/1.png",
     imageAlt: "Intelligent neural network visualization representing applied artificial intelligence and machine learning pipelines",
     imageCaption: "Applied AI requires thoughtful integration between domain-specific models, enterprise data governance, and responsible human oversight.",
     executiveTakeaways: [
@@ -177,7 +177,7 @@ export const insightsArticles = [
       name: "SkyWeb Technology Practice",
       role: "Cloud Engineering & Infrastructure Advisory Group"
     },
-    image: "/assets/who-cloud.jpg",
+    image: "/assets/insights/4.png",
     imageAlt: "Server room racks and high-performance cloud networking infrastructure",
     imageCaption: "Modern cloud engineering balances high availability, granular security controls, and disciplined resource economics.",
     executiveTakeaways: [
@@ -258,7 +258,7 @@ export const insightsArticles = [
       name: "SkyWeb Technology Practice",
       role: "Digital Products & Platform Innovation Team"
     },
-    image: "/assets/who-3d.jpg",
+    image: "/assets/insights/5.png",
     imageAlt: "Geometric 3D digital concept symbolizing modular platform architecture and creative technology",
     imageCaption: "Purpose-built digital platforms unite specialized user workflows, distributed media pipelines, and vibrant community interaction.",
     executiveTakeaways: [
@@ -339,7 +339,7 @@ export const insightsArticles = [
       name: "SkyWeb Technology Practice",
       role: "Enterprise Systems & Business Modernization Group"
     },
-    image: "/assets/who-engineer.jpg",
+    image: "/assets/insights/3.png",
     imageAlt: "Business professionals collaborating over operational dashboards and enterprise workflow systems",
     imageCaption: "Integrated business technology breaks down organizational silos and equips decision-makers with real-time operational clarity.",
     executiveTakeaways: [
@@ -420,7 +420,7 @@ export const insightsArticles = [
       name: "SkyWeb Technology Practice",
       role: "Strategic IT Advisory & Digital Transformation Group"
     },
-    image: "/assets/whiteboard.jpg",
+    image: "/assets/insights/6.png",
     imageAlt: "Senior technology advisors mapping out digital architecture and roadmap strategy on a collaborative whiteboard",
     imageCaption: "Effective technology consulting bridges high-level executive objectives with concrete architectural feasibility and phased execution.",
     executiveTakeaways: [

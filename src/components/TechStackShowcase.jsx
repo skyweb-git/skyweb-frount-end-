@@ -32,10 +32,7 @@ export default function TechStackShowcase() {
   const categories = ["All", "Frontend", "Backend", "Languages", "AI & ML", "Cloud & DevOps", "Databases"];
 
   return (
-    <div className="w-full relative max-w-5xl mx-auto rounded-3xl border border-slate-200/90 bg-gradient-to-b from-[#f8fafc]/90 via-white to-[#f1f5f9]/70 shadow-[0_4px_30px_rgba(0,0,0,0.03)] overflow-hidden p-4 sm:p-6 lg:p-8 flex flex-col items-center">
-      {/* Subtle modern dot background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-35 pointer-events-none" />
-
+    <div className="w-full relative max-w-5xl mx-auto flex flex-col items-center">
       {/* Soft center ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-gradient-to-tr from-[#004AAD]/8 via-indigo-400/6 to-sky-300/8 rounded-full blur-3xl pointer-events-none" />
 

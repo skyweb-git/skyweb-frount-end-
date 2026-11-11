@@ -14,6 +14,7 @@ import {
   Activity,
   ArrowLeft,
   ExternalLink,
+  Award,
   Mail
 } from 'lucide-react';
 
@@ -180,17 +181,34 @@ export default function SubpageView({ category: propCategory, onOpenModal }) {
 
             {pageData.article.image && (
               <div className="mb-12">
-                <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-50">
-                  <img 
-                    src={pageData.article.image} 
-                    alt={pageData.article.headline} 
-                    className="w-full h-auto max-h-[500px] object-cover"
-                  />
-                </div>
-                {pageData.article.imageCaption && (
-                  <p className="text-xs text-slate-500 text-center mt-2.5">
-                    {pageData.article.imageCaption}
-                  </p>
+                {pageData.article.image.toLowerCase().includes('logo') ? (
+                  <div className="py-6 sm:py-8 flex flex-col items-center justify-center bg-transparent">
+                    <img 
+                      src={pageData.article.image} 
+                      alt={pageData.article.headline} 
+                      className="h-32 sm:h-40 md:h-44 w-auto object-contain mx-auto transition-transform duration-300 hover:scale-105"
+                    />
+                    {pageData.article.imageCaption && (
+                      <p className="text-xs text-slate-400 font-medium tracking-wide uppercase text-center mt-4">
+                        {pageData.article.imageCaption}
+                      </p>
+                    )}
+                  </div>
+                ) : (
+                  <div>
+                    <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-50">
+                      <img 
+                        src={pageData.article.image} 
+                        alt={pageData.article.headline} 
+                        className="w-full h-auto max-h-[500px] object-cover"
+                      />
+                    </div>
+                    {pageData.article.imageCaption && (
+                      <p className="text-xs text-slate-500 text-center mt-2.5">
+                        {pageData.article.imageCaption}
+                      </p>
+                    )}
+                  </div>
                 )}
               </div>
             )}
@@ -234,10 +252,10 @@ export default function SubpageView({ category: propCategory, onOpenModal }) {
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-3 tracking-tight font-['DM_Sans']">
-                All Verified Client Case Reviews
+                The Clients
               </h2>
               <p className="text-base sm:text-lg text-slate-600">
-                Detailed metrics and impact statements from our {pageData.testimonials.length} confirmed client partnerships.
+                What partners say about working with SkyWeb — outcomes in their own words.
               </p>
             </div>
 
@@ -429,22 +447,73 @@ export default function SubpageView({ category: propCategory, onOpenModal }) {
           <div className="max-w-6xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
-                Official Announcements &amp; Releases
+                {pageData.newsSectionTitle || "Official Announcements & Releases"}
               </h2>
               <p className="text-base sm:text-lg text-slate-600">
-                Latest milestones, global expansion updates, and technology releases from SkyWeb.
+                {pageData.newsSectionSubtitle || "Latest milestones, verified media clippings, and technology releases from SkyWeb."}
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {pageData.newsItems.map((n, idx) => (
-                <div key={idx} className="bg-[#fafafa] border border-slate-200/90 rounded-2xl p-7 hover:border-[#004AAD]/50 transition-all">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-[#004AAD] uppercase tracking-wider">{n.category}</span>
-                    <span className="text-xs text-slate-400">{n.date}</span>
+                <div 
+                  key={idx} 
+                  className="bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:border-[#004AAD]/50 transition-all duration-300 flex flex-col group"
+                >
+                  {n.image && (
+                    <div className="relative aspect-[16/10] w-full bg-slate-100 overflow-hidden border-b border-slate-100">
+                      <img 
+                        src={n.image} 
+                        alt={n.title} 
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 cursor-pointer"
+                        onClick={() => window.open(n.image, '_blank')}
+                        title="Click to view full press clipping"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-2.5">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {n.publisher && (
+                            <span className="text-[11px] font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-md">
+                              {n.publisher}
+                            </span>
+                          )}
+                          <span className="text-[11px] font-bold text-[#004AAD] uppercase tracking-wider bg-blue-50 px-2.5 py-0.5 rounded-full">
+                            {n.category}
+                          </span>
+                        </div>
+                        <span className="text-xs text-slate-400 font-medium shrink-0">{n.date}</span>
+                      </div>
+                      <h4 className="text-lg font-bold text-slate-900 group-hover:text-[#004AAD] transition-colors mb-2.5 line-clamp-2 font-['DM_Sans']">
+                        {n.title}
+                      </h4>
+                      <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
+                        {n.summary}
+                      </p>
+                    </div>
+
+                    {n.image && (
+                      <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-[#004AAD]">
+                        <span className="flex items-center gap-1 text-slate-500">
+                          <Award className="w-3.5 h-3.5 text-[#004AAD]" />
+                          <span>Verified Press</span>
+                        </span>
+                        <a 
+                          href={n.image} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="hover:underline flex items-center gap-1 text-[#004AAD]"
+                        >
+                          <span>View Clipping</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
+                    )}
                   </div>
-                  <h4 className="text-xl font-bold text-slate-900 mb-2">{n.title}</h4>
-                  <p className="text-slate-600 text-sm leading-relaxed">{n.summary}</p>
                 </div>
               ))}
             </div>
@@ -495,6 +564,7 @@ export default function SubpageView({ category: propCategory, onOpenModal }) {
       )}
 
       {/* ================= 11. ENTERPRISE ENGINEERING STANDARD ================= */}
+      {!(pageData.testimonials?.length && !pageData.pillars?.length && !pageData.article) && (
       <section className="py-16 px-6 sm:px-8 bg-[#f8fafc] border-b border-slate-200/70">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -541,6 +611,7 @@ export default function SubpageView({ category: propCategory, onOpenModal }) {
           </div>
         </div>
       </section>
+      )}
 
       {/* ================= 12. RELATED SIBLING PAGES ================= */}
       {siblingPages.length > 0 && (

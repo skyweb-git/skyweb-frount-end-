@@ -4,7 +4,6 @@ import {
   Building2, 
   Users, 
   ShieldCheck, 
-  Leaf, 
   Award, 
   MessageSquareQuote, 
   Handshake, 
@@ -44,29 +43,22 @@ const hubSections = [
     title: "Our Brand & Purpose",
     href: "/about/brand",
     icon: ShieldCheck,
-    desc: "Engineering Digital Possibilities: precision, zero-compromise code, and measurable enterprise value.",
+    desc: "High-quality tech and clean UI engineered by IIT Madras & IIT Hyderabad talent alongside industry masters.",
     badge: "Brand Identity"
-  },
-  {
-    title: "Sustainability & Green Cloud",
-    href: "/about/sustainability",
-    icon: Leaf,
-    desc: "Algorithmic carbon reduction, renewable-first cloud compute, and sustainable microservices.",
-    badge: "ESG & Green Tech"
   },
   {
     title: "Recognition & Awards",
     href: "/about/recognition",
     icon: Award,
-    desc: "SOC 2 Type II, ISO 27001 verified, and internationally recognized for cloud delivery excellence.",
-    badge: "Accolades"
+    desc: "National newspaper press features, hackathon conclave honors, and audited SOC 2 / ISO 27001 compliance.",
+    badge: "Accolades & Press"
   },
   {
-    title: "Customer Speak & Trust",
+    title: "The Clients",
     href: "/about/customer-speak",
     icon: MessageSquareQuote,
-    desc: "Verified client testimonials and real-world results from CTOs, product directors, and partner brands.",
-    badge: "Client Testimonials"
+    desc: "Partner feedback and real-world outcomes from brands building with SkyWeb.",
+    badge: "The Clients"
   },
   {
     title: "Partners Ecosystem",
@@ -115,52 +107,27 @@ const hubSections = [
 const featuredTestimonials = [
   {
     company: "MasterBrush Art Foundation",
-    logo: "/assets/logos/logo-4.png",
-    clientName: "Rohan Varma",
-    role: "Executive Director",
     imageUrl: "/assets/testimonials/card-1.png",
-    metric: "15,000+ Assets Preserved",
-    rating: 5,
     quote: "SkyWeb built our philanthropic archival and digital exhibition platform with exceptional UX, robust cloud backup systems, and seamless accessibility across devices."
   },
   {
     company: "ArtArtist",
-    logo: "/assets/logos/logo-1.png",
-    clientName: "Uday Kumar Sangisetti",
-    role: "VP of Technology",
     imageUrl: "/assets/testimonials/card-2.png",
-    metric: "250K+ Active Artists",
-    rating: 5,
     quote: "SkyWeb architected a high-throughput digital gallery and creator marketplace that scaled past 250,000 active creators seamlessly with flawless uptime."
   },
   {
     company: "Value Laden",
-    logo: "/assets/logos/logo-9.png",
-    clientName: "Lavanaya Pasunoori",
-    role: "Chief Investment Officer",
     imageUrl: "/assets/testimonials/card-3.png",
-    metric: "99.999% Calculation Accuracy",
-    rating: 5,
     quote: "SkyWeb engineered our financial reporting engine and algorithmic advisory dashboard with unyielding accuracy, data privacy, and regulatory auditability."
   },
   {
     company: "Akashya Labs and Tech",
-    logo: "/assets/logos/logo-10.png",
-    clientName: "Mr. Venkat Reddy",
-    role: "Founder & Chief Executive Officer",
     imageUrl: "/assets/testimonials/card-4.png",
-    metric: "Zero Launch-Day Defects",
-    rating: 5,
     quote: "A brilliant, agile team. They built our next-generation mobile platform on time, with strict adherence to security protocols and zero launch-day defects."
   },
   {
     company: "ServFex",
-    logo: "/assets/logos/logo-5.png",
-    clientName: "David Miller",
-    role: "Chief Operations Officer",
     imageUrl: "/assets/testimonials/card-6.png",
-    metric: "48% Faster Service Dispatch",
-    rating: 5,
     quote: "The field service management engine and real-time dispatch APIs engineered by SkyWeb reduced technician turnaround times by 48% across thousands of service orders."
   }
 ];
@@ -176,7 +143,7 @@ export default function AboutPage({ onOpenModal }) {
           </h1>
 
           <p className="text-base sm:text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed mb-10 font-normal">
-            Welcome to the SkyWeb Hub. Explore our corporate foundations, executive leadership, client trust testimonials, brand philosophy, sustainability mandates, and global innovation ecosystem.
+            Welcome to the SkyWeb Hub. Explore our corporate foundations, executive leadership, client trust testimonials, brand philosophy, recognition accolades, and global innovation ecosystem.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -199,7 +166,7 @@ export default function AboutPage({ onOpenModal }) {
       </section>
 
       {/* ================= 2. SKYWEB HUB DIRECTORY GRID (CLEAN WHITE ENTERPRISE BACKGROUND) ================= */}
-      <section className="py-20 px-6 sm:px-8 bg-white border-b border-slate-100" id="hub-directory">
+      <section className="py-12 sm:py-16 px-6 sm:px-8 bg-white border-b border-slate-100" id="hub-directory">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
@@ -250,7 +217,7 @@ export default function AboutPage({ onOpenModal }) {
       </section>
 
       {/* ================= 3. ORIGIN, MISSION & IIT ROOTS ================= */}
-      <section className="py-20 px-6 sm:px-8 bg-slate-50/70 border-b border-slate-200">
+      <section className="py-12 sm:py-16 px-6 sm:px-8 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5">
@@ -288,7 +255,7 @@ export default function AboutPage({ onOpenModal }) {
       </section>
 
       {/* ================= 4. EXECUTIVE LEADERSHIP TEAM ================= */}
-      <section className="py-20 px-6 sm:px-8 bg-white border-b border-slate-100" id="leadership">
+      <section className="py-12 sm:py-16 px-6 sm:px-8 bg-white border-b border-slate-100" id="leadership">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
@@ -369,28 +336,27 @@ export default function AboutPage({ onOpenModal }) {
         </div>
       </section>
 
-      {/* ================= 5. CUSTOMER SPEAK & TRUST (TESTIMONIALS) ================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/70 border-b border-slate-200" id="customer-speak">
+      {/* ================= 5. THE CLIENTS ================= */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50/70 border-b border-slate-200" id="the-clients">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div className="max-w-2xl">
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight font-['DM_Sans']">
-                Customer Speak &amp; Trust
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-3 tracking-tight font-['DM_Sans']">
+                The Clients
               </h2>
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-                Authentic testimonials from technology officers, digital leads, and founders across high-traffic platforms and enterprise brands.
+                What partners say about working with SkyWeb — outcomes in their own words.
               </p>
             </div>
             <Link
               to="/about/customer-speak"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-slate-50 border border-slate-300 text-[#004AAD] hover:text-[#003B8A] font-bold text-sm transition-all whitespace-nowrap self-start md:self-auto shadow-xs"
             >
-              <span>View All Testimonials</span>
+              <span>View all clients</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* 2 in a line Grid - Good UI Profile Testimonial Cards */}
           <ClientReviewsGrid testimonials={featuredTestimonials} />
         </div>
       </section>

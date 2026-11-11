@@ -39,7 +39,7 @@ const wrapperVariants: Variants = {
   expanded: {
     left: "50%",
     x: "-50%",
-    top: "1.5rem",
+    top: "0.75rem",
     transition: {
       type: "spring",
       damping: 24,
@@ -47,9 +47,9 @@ const wrapperVariants: Variants = {
     },
   },
   collapsed: {
-    left: "1.5rem",
+    left: "1rem",
     x: "0%",
-    top: "1.5rem",
+    top: "0.75rem",
     transition: {
       type: "spring",
       damping: 24,
@@ -116,9 +116,18 @@ export function AnimatedNavFramer({
 }: AnimatedNavFramerProps) {
   const [isExpanded, setExpanded] = React.useState(true);
   const [mobileDrawerOpen, setMobileDrawerOpen] = React.useState(false);
+  const [mobileOpenSection, setMobileOpenSection] = React.useState<string | null>(null);
   const [activeMenu, setActiveMenu] = React.useState<MenuSection>(null);
   const dropdownTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
   const location = useLocation();
+
+  const toggleMobileSection = (section: string) => {
+    setMobileOpenSection((prev) => (prev === section ? null : section));
+  };
+
+  React.useEffect(() => {
+    if (!mobileDrawerOpen) setMobileOpenSection(null);
+  }, [mobileDrawerOpen]);
   
   const { scrollY } = useScroll();
   const lastScrollY = React.useRef(0);
@@ -170,7 +179,7 @@ export function AnimatedNavFramer({
 
   return (
     <>
-      {/* Floating Capsule Navbar (Centers when expanded, moves to top-left corner when collapsed) */}
+      {/* Floating Rectangular Navbar with Clean Rounded Corners */}
       <motion.div 
         variants={wrapperVariants}
         initial="expanded"
@@ -186,7 +195,7 @@ export function AnimatedNavFramer({
           whileTap={!isExpanded ? { scale: 0.95 } : {}}
           onClick={handleNavClick}
           className={cn(
-            "flex items-center flex-nowrap whitespace-nowrap overflow-hidden rounded-full border border-slate-200/90 bg-white/95 shadow-[0_12px_45px_-8px_rgba(0,0,0,0.12),0_4px_16px_-4px_rgba(0,0,0,0.04)] backdrop-blur-md h-[74px] sm:h-[82px] max-w-[96vw] px-3 sm:px-4 transition-colors relative",
+            "flex items-center flex-nowrap whitespace-nowrap overflow-hidden rounded-2xl border border-slate-200/80 bg-white/95 shadow-[0_10px_35px_-6px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] backdrop-blur-md h-[56px] sm:h-[68px] md:h-[72px] max-w-[calc(100vw-1.5rem)] sm:max-w-[96vw] px-2.5 sm:px-3.5 md:px-5 transition-all relative",
             !isExpanded && "cursor-pointer justify-center px-0 w-auto h-auto border-transparent bg-transparent shadow-none backdrop-blur-none hover:border-transparent hover:shadow-none"
           )}
         >
@@ -195,7 +204,7 @@ export function AnimatedNavFramer({
             variants={logoVariants}
             className={cn(
               "flex-shrink-0 flex items-center transition-all",
-              isExpanded ? "pl-2 sm:pl-3 pr-2 sm:pr-3" : "p-0 justify-center"
+              isExpanded ? "pl-0.5 sm:pl-1 md:pl-2 pr-1.5 sm:pr-2 md:pr-4" : "p-0 justify-center"
             )}
           >
             <Link 
@@ -215,7 +224,7 @@ export function AnimatedNavFramer({
                 alt="SkyWeb Logo" 
                 className={cn(
                   "w-auto object-contain transition-all duration-200",
-                  isExpanded ? "h-14 sm:h-[60px] drop-shadow-sm rounded-lg" : "h-11 sm:h-12"
+                  isExpanded ? "h-8 sm:h-11 md:h-[48px] drop-shadow-sm rounded-lg" : "h-9 sm:h-11 md:h-12"
                 )} 
               />
             </Link>
@@ -224,7 +233,7 @@ export function AnimatedNavFramer({
           {/* Desktop Navigation Links */}
           <motion.div
             className={cn(
-              "hidden md:flex items-center flex-nowrap whitespace-nowrap flex-shrink-0 gap-1 lg:gap-2 pr-1.5",
+              "hidden md:flex items-center flex-nowrap whitespace-nowrap flex-shrink-0 gap-1 lg:gap-1.5 pr-1",
               !isExpanded && "pointer-events-none !hidden"
             )}
           >
@@ -247,7 +256,7 @@ export function AnimatedNavFramer({
                         closeDropdown();
                       }}
                       className={cn(
-                        "inline-flex items-center flex-nowrap whitespace-nowrap flex-shrink-0 gap-1.5 text-[15px] font-semibold transition-all px-3.5 lg:px-4 py-2 rounded-full outline-none focus:outline-none select-none",
+                        "inline-flex items-center flex-nowrap whitespace-nowrap flex-shrink-0 gap-1.5 text-[14.5px] lg:text-[15px] font-semibold transition-all px-3.5 lg:px-4 py-2 rounded-lg outline-none focus:outline-none select-none",
                         isActive || isHovered
                           ? "text-[#004AAD] bg-[#004AAD]/10 shadow-xs"
                           : "text-slate-600 hover:text-[#004AAD] hover:bg-slate-100/70"
@@ -269,7 +278,7 @@ export function AnimatedNavFramer({
                       closeDropdown();
                     }}
                     className={cn(
-                      "text-[15px] font-semibold transition-all px-3.5 lg:px-4 py-2 rounded-full inline-block outline-none focus:outline-none select-none whitespace-nowrap flex-shrink-0",
+                      "text-[14.5px] lg:text-[15px] font-semibold transition-all px-3.5 lg:px-4 py-2 rounded-lg inline-block outline-none focus:outline-none select-none whitespace-nowrap flex-shrink-0",
                       isActive
                         ? "text-[#004AAD] bg-[#004AAD]/10 shadow-xs"
                         : "text-slate-600 hover:text-[#004AAD] hover:bg-slate-100/70"
@@ -282,14 +291,14 @@ export function AnimatedNavFramer({
             })}
 
             {/* Desktop Contact Us Link */}
-            <motion.div variants={itemVariants} className="pl-1 sm:pl-2 flex-shrink-0 whitespace-nowrap">
+            <motion.div variants={itemVariants} className="pl-1.5 sm:pl-2.5 flex-shrink-0 whitespace-nowrap">
               <Link
                 to="/contact"
                 onClick={(e) => {
                   e.stopPropagation();
                   closeDropdown();
                 }}
-                className="h-11 sm:h-12 px-5 sm:px-6 rounded-full bg-[#004AAD] hover:bg-[#003B8A] text-white text-sm sm:text-[15px] font-bold tracking-wide transition-all duration-200 shadow-[0_4px_16px_rgba(0,74,173,0.35)] hover:shadow-[0_6px_22px_rgba(0,74,173,0.45)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap outline-none focus:outline-none inline-flex items-center justify-center"
+                className="h-10 sm:h-11 px-5 sm:px-6 rounded-xl bg-[#004AAD] hover:bg-[#003B8A] text-white text-sm sm:text-[14.5px] font-semibold tracking-normal transition-all duration-200 shadow-[0_4px_14px_rgba(0,74,173,0.3)] hover:shadow-[0_6px_20px_rgba(0,74,173,0.4)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap outline-none focus:outline-none inline-flex items-center justify-center"
               >
                 Contact Us
               </Link>
@@ -300,7 +309,7 @@ export function AnimatedNavFramer({
           <motion.div
             variants={itemVariants}
             className={cn(
-              "flex md:hidden items-center gap-2 pr-2",
+              "flex md:hidden items-center gap-1.5 pr-0.5",
               !isExpanded && "pointer-events-none !hidden"
             )}
           >
@@ -309,9 +318,9 @@ export function AnimatedNavFramer({
               onClick={(e) => {
                 e.stopPropagation();
               }}
-              className="h-10 px-4 rounded-full bg-[#004AAD] hover:bg-[#003B8A] text-white text-xs font-bold transition-all shadow-xs cursor-pointer whitespace-nowrap outline-none focus:outline-none inline-flex items-center justify-center"
+              className="h-8 px-3 rounded-lg bg-[#004AAD] hover:bg-[#003B8A] text-white text-[11px] font-semibold transition-all shadow-xs cursor-pointer whitespace-nowrap outline-none focus:outline-none inline-flex items-center justify-center"
             >
-              Contact Us
+              Contact
             </Link>
 
             <button
@@ -320,10 +329,10 @@ export function AnimatedNavFramer({
                 e.stopPropagation();
                 setMobileDrawerOpen(true);
               }}
-              className="p-2 rounded-full text-slate-700 hover:bg-slate-100 cursor-pointer outline-none focus:outline-none"
+              className="h-8 w-8 inline-flex items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 cursor-pointer outline-none focus:outline-none"
               aria-label="Open navigation menu"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             </button>
           </motion.div>
         </motion.nav>
@@ -333,7 +342,7 @@ export function AnimatedNavFramer({
       <AnimatePresence>
         {isExpanded && activeMenu && (
           <div 
-            className="fixed top-24 sm:top-[112px] left-0 right-0 flex justify-center z-40 px-4 pointer-events-none"
+            className="fixed top-24 sm:top-[104px] left-0 right-0 flex justify-center z-40 px-4 pointer-events-none"
             onMouseEnter={() => {
               if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
             }}
@@ -382,23 +391,23 @@ export function AnimatedNavFramer({
                       <Link to="/about/brand" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] hover:translate-x-0.5 transition-all">
                         Our Brand
                       </Link>
-                      <Link to="/about/sustainability" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] hover:translate-x-0.5 transition-all">
-                        Sustainability
+                      <Link to="/about/recognition" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] hover:translate-x-0.5 transition-all">
+                        Recognition & Awards
                       </Link>
                     </div>
 
                     <div className="flex flex-col gap-2.5">
-                      <Link to="/about/recognition" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] hover:translate-x-0.5 transition-all sm:mt-7">
-                        Recognition
-                      </Link>
-                      <Link to="/about/customer-speak" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] hover:translate-x-0.5 transition-all">
-                        Customer Speak
+                      <Link to="/about/customer-speak" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] hover:translate-x-0.5 transition-all sm:mt-7">
+                        The Clients
                       </Link>
                       <Link to="/about/partners" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] hover:translate-x-0.5 transition-all">
                         Partners Ecosystem
                       </Link>
                       <Link to="/about/portfolio" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] hover:translate-x-0.5 transition-all">
                         Portfolio Companies
+                      </Link>
+                      <Link to="/about/citizenship" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] hover:translate-x-0.5 transition-all">
+                        Corporate Citizenship
                       </Link>
                     </div>
                   </div>
@@ -558,7 +567,7 @@ export function AnimatedNavFramer({
                           <Link to="/capabilities/hashtalks" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] transition-colors">
                             HashTalks
                           </Link>
-                          <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200/80 px-1.5 py-0.5 rounded-full uppercase tracking-wider">
+                          <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200/80 px-1.5 py-0.5 rounded-md uppercase tracking-wider">
                             Coming Soon
                           </span>
                         </div>
@@ -566,7 +575,7 @@ export function AnimatedNavFramer({
                           <Link to="/capabilities/artube" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] transition-colors">
                             ArTube
                           </Link>
-                          <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200/80 px-1.5 py-0.5 rounded-full uppercase tracking-wider">
+                          <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200/80 px-1.5 py-0.5 rounded-md uppercase tracking-wider">
                             Coming Soon
                           </span>
                         </div>
@@ -574,7 +583,7 @@ export function AnimatedNavFramer({
                           <Link to="/capabilities/art-coin" onClick={closeDropdown} className="text-slate-600 hover:text-[#004AAD] transition-colors">
                             Art Coin
                           </Link>
-                          <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200/80 px-1.5 py-0.5 rounded-full uppercase tracking-wider">
+                          <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200/80 px-1.5 py-0.5 rounded-md uppercase tracking-wider">
                             Coming Soon
                           </span>
                         </div>
@@ -631,49 +640,51 @@ export function AnimatedNavFramer({
                     <Link to="/industries/travel-logistics" onClick={closeDropdown} className="text-slate-700 font-semibold hover:text-[#004AAD] hover:translate-x-0.5 transition-all">Travel, Logistics & Hospitality</Link>
                   </div>
 
-                  {/* 2 Featured Report Cards */}
+                  {/* 2 Featured Platform & Client Cards (ArtArtist & ServFex) */}
                   <div className="col-span-12 lg:col-span-3 flex flex-col gap-3">
-                    <Link
-                      to="/insights/bank-of-tomorrow"
+                    <a
+                      href="https://artartist.in"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={closeDropdown}
                       className="group relative rounded-xl overflow-hidden h-36 flex flex-col justify-between p-4 shadow-sm hover:shadow-md transition-all border border-slate-800"
-                      style={{ backgroundImage: "url('/assets/ind-card1.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
+                      style={{ backgroundImage: "url('/assets/artartist-showcase.jpg')", backgroundSize: "cover", backgroundPosition: "center top" }}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/35 group-hover:via-black/45 transition-colors" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 group-hover:via-black/50 transition-colors" />
                       <div className="relative z-10">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-200 border-b border-white/60 pb-0.5 inline-block">
-                          Featured Report
+                          Featured Platform
                         </span>
                       </div>
                       <div className="relative z-10">
                         <h4 className="text-sm font-bold text-white leading-snug mb-1">
-                          The Bank of Tomorrow: A Strategic Perspective
+                          ArtArtist: Artists Get Hired
                         </h4>
                         <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-300 uppercase tracking-wider group-hover:text-white transition-colors">
-                          <span>READ MORE</span>
+                          <span>EXPLORE</span>
                           <ArrowRight className="h-3 w-3 transform group-hover:translate-x-1 transition-transform" />
                         </span>
                       </div>
-                    </Link>
+                    </a>
 
                     <Link
-                      to="/insights/zero-gravity-telco"
+                      to="/about/customer-speak"
                       onClick={closeDropdown}
-                      className="group relative rounded-xl overflow-hidden h-36 flex flex-col justify-end p-4 shadow-sm hover:shadow-md transition-all border border-slate-800"
-                      style={{ backgroundImage: "url('/assets/ind-card2.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
+                      className="group relative rounded-xl overflow-hidden h-36 flex flex-col justify-between p-4 shadow-sm hover:shadow-md transition-all border border-slate-800"
+                      style={{ backgroundImage: "url('/assets/servfex-showcase.png')", backgroundSize: "cover", backgroundPosition: "center top" }}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-sky-950/60 to-black/40 group-hover:via-sky-950/50 transition-colors" />
-                      <div className="relative z-10 mb-auto">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 group-hover:via-black/50 transition-colors" />
+                      <div className="relative z-10">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-200 border-b border-white/60 pb-0.5 inline-block">
-                          Featured White Paper
+                          Client Spotlight
                         </span>
                       </div>
                       <div className="relative z-10">
                         <h4 className="text-sm font-bold text-white leading-snug mb-1">
-                          Zero Gravity Telco Architecture™
+                          ServFex: Everyday Services Made Simpler
                         </h4>
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-cyan-300 uppercase tracking-wider group-hover:text-white transition-colors">
-                          <span>READ MORE</span>
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-sky-300 uppercase tracking-wider group-hover:text-white transition-colors">
+                          <span>EXPLORE</span>
                           <ArrowRight className="h-3 w-3 transform group-hover:translate-x-1 transition-transform" />
                         </span>
                       </div>
@@ -800,128 +811,227 @@ export function AnimatedNavFramer({
         )}
       </AnimatePresence>
 
-      {/* ================= MOBILE DRAWER USING SHADCN SHEET ================= */}
+      {/* ================= MOBILE DRAWER — neat accordion ================= */}
       <Sheet open={mobileDrawerOpen} onOpenChange={setMobileDrawerOpen}>
-        <SheetContent side="right" className="w-[320px] sm:w-[380px] bg-white p-6 flex flex-col justify-between overflow-y-auto">
-          <div>
-            <SheetHeader className="mb-5 pb-4 border-b border-slate-100 text-left">
-              <SheetTitle className="flex items-center">
-                <img src="/assets/logo.png" alt="SkyWeb" className="h-12 w-auto object-contain rounded-md" />
-              </SheetTitle>
-            </SheetHeader>
+        <SheetContent side="right" className="w-[min(100vw,360px)] bg-white p-0 flex flex-col overflow-hidden">
+          <SheetHeader className="px-5 pt-5 pb-4 border-b border-slate-100 text-left shrink-0">
+            <SheetTitle className="flex items-center">
+              <img src="/assets/logo.png" alt="SkyWeb" className="h-10 w-auto object-contain rounded-md" />
+            </SheetTitle>
+          </SheetHeader>
 
-            <nav className="flex flex-col gap-3">
-              {/* About Us */}
-              <div className="pb-3 border-b border-slate-100">
-                <Link
-                  to="/about"
-                  onClick={() => setMobileDrawerOpen(false)}
-                  className="flex items-center justify-between py-1 text-base font-bold text-[#004AAD]"
-                >
-                  <span>About Us</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <div className="grid grid-cols-2 gap-1.5 pt-1.5 text-xs text-slate-600">
-                  <Link to="/about/overview" onClick={() => setMobileDrawerOpen(false)}>Corporate Overview</Link>
-                  <Link to="/about/leadership" onClick={() => setMobileDrawerOpen(false)}>Leadership</Link>
-                  <Link to="/about/brand" onClick={() => setMobileDrawerOpen(false)}>Our Brand</Link>
-                  <Link to="/about/sustainability" onClick={() => setMobileDrawerOpen(false)}>Sustainability</Link>
-                </div>
-              </div>
-
-              {/* Capabilities */}
-              <div className="pb-3 border-b border-slate-100">
-                <Link
-                  to="/capabilities"
-                  onClick={() => setMobileDrawerOpen(false)}
-                  className="flex items-center justify-between py-1 text-base font-bold text-[#0f172a] hover:text-[#004AAD]"
-                >
-                  <span>Capabilities</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <div className="grid grid-cols-2 gap-1.5 pt-1.5 text-xs text-slate-600">
-                  <Link to="/capabilities/application-services" onClick={() => setMobileDrawerOpen(false)}>Application Services</Link>
-                  <Link to="/capabilities/artificial-intelligence" onClick={() => setMobileDrawerOpen(false)}>AI & Machine Learning</Link>
-                  <Link to="/capabilities/cloud-infrastructure" onClick={() => setMobileDrawerOpen(false)}>Cloud & Infrastructure</Link>
-                  <Link to="/capabilities/products-platforms" onClick={() => setMobileDrawerOpen(false)}>Digital Platforms</Link>
-                  <Link to="/capabilities/business-technology" onClick={() => setMobileDrawerOpen(false)}>Business Technology</Link>
-                  <Link to="/capabilities/experience-services" onClick={() => setMobileDrawerOpen(false)}>UI/UX Experience</Link>
-                  <Link to="/capabilities/nano-profiles" onClick={() => setMobileDrawerOpen(false)} className="col-span-2 text-[#004AAD] font-semibold">Nano Profiles™ (Identity)</Link>
-                  <Link to="/capabilities/hashtalks" onClick={() => setMobileDrawerOpen(false)} className="text-slate-600 flex items-center gap-1.5">
-                    <span>HashTalks</span>
-                    <span className="text-[9px] font-semibold text-amber-700 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">Soon</span>
+          <nav className="flex-1 overflow-y-auto px-3 py-3 space-y-1">
+            {/* About Us */}
+            <div className="rounded-xl overflow-hidden">
+              <button
+                type="button"
+                onClick={() => toggleMobileSection("about")}
+                className={cn(
+                  "w-full flex items-center justify-between px-3 py-3.5 rounded-xl text-left transition-colors",
+                  mobileOpenSection === "about" ? "bg-[#004AAD]/8 text-[#004AAD]" : "text-slate-900 hover:bg-slate-50"
+                )}
+                aria-expanded={mobileOpenSection === "about"}
+              >
+                <span className="text-[15px] font-bold">About Us</span>
+                <ChevronDown
+                  className={cn(
+                    "h-4 w-4 shrink-0 transition-transform duration-200",
+                    mobileOpenSection === "about" && "rotate-180 text-[#004AAD]"
+                  )}
+                />
+              </button>
+              {mobileOpenSection === "about" && (
+                <div className="px-2 pb-3 space-y-0.5">
+                  <Link to="/about" onClick={() => setMobileDrawerOpen(false)} className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-[#004AAD] hover:bg-blue-50">
+                    About overview
                   </Link>
-                  <Link to="/capabilities/artube" onClick={() => setMobileDrawerOpen(false)} className="text-slate-600 flex items-center gap-1.5">
-                    <span>ArTube</span>
-                    <span className="text-[9px] font-semibold text-amber-700 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">Soon</span>
+                  {[
+                    { to: "/about/overview", label: "Corporate Overview" },
+                    { to: "/about/leadership", label: "Leadership" },
+                    { to: "/about/brand", label: "Our Brand" },
+                    { to: "/about/customer-speak", label: "The Clients" },
+                    { to: "/about/recognition", label: "Recognition & Awards" },
+                  ].map((link) => (
+                    <Link
+                      key={link.to}
+                      to={link.to}
+                      onClick={() => setMobileDrawerOpen(false)}
+                      className="block px-3 py-2.5 rounded-lg text-sm text-slate-600 hover:bg-slate-50 hover:text-[#004AAD]"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Capabilities */}
+            <div className="rounded-xl overflow-hidden">
+              <button
+                type="button"
+                onClick={() => toggleMobileSection("capabilities")}
+                className={cn(
+                  "w-full flex items-center justify-between px-3 py-3.5 rounded-xl text-left transition-colors",
+                  mobileOpenSection === "capabilities" ? "bg-[#004AAD]/8 text-[#004AAD]" : "text-slate-900 hover:bg-slate-50"
+                )}
+                aria-expanded={mobileOpenSection === "capabilities"}
+              >
+                <span className="text-[15px] font-bold">Capabilities</span>
+                <ChevronDown
+                  className={cn(
+                    "h-4 w-4 shrink-0 transition-transform duration-200",
+                    mobileOpenSection === "capabilities" && "rotate-180 text-[#004AAD]"
+                  )}
+                />
+              </button>
+              {mobileOpenSection === "capabilities" && (
+                <div className="px-2 pb-3 space-y-0.5">
+                  <Link to="/capabilities" onClick={() => setMobileDrawerOpen(false)} className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-[#004AAD] hover:bg-blue-50">
+                    All capabilities
                   </Link>
-                  <Link to="/capabilities/art-coin" onClick={() => setMobileDrawerOpen(false)} className="text-slate-600 flex items-center gap-1.5">
-                    <span>Art Coin</span>
-                    <span className="text-[9px] font-semibold text-amber-700 bg-amber-50 px-1 py-0.2 rounded border border-amber-200">Soon</span>
+                  {[
+                    { to: "/capabilities/application-services", label: "Software Engineering" },
+                    { to: "/capabilities/artificial-intelligence", label: "AI & Machine Learning" },
+                    { to: "/capabilities/cloud-infrastructure", label: "Cloud & Infrastructure" },
+                    { to: "/capabilities/products-platforms", label: "Digital Platforms" },
+                    { to: "/capabilities/business-technology", label: "Business Technology" },
+                    { to: "/capabilities/experience-services", label: "UI/UX Experience" },
+                    { to: "/capabilities/nano-profiles", label: "Nano Profiles™", accent: true },
+                    { to: "/capabilities/hashtalks", label: "HashTalks", soon: true },
+                    { to: "/capabilities/artube", label: "ArTube", soon: true },
+                    { to: "/capabilities/art-coin", label: "Art Coin", soon: true },
+                  ].map((link) => (
+                    <Link
+                      key={link.to}
+                      to={link.to}
+                      onClick={() => setMobileDrawerOpen(false)}
+                      className={cn(
+                        "flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm hover:bg-slate-50",
+                        link.accent ? "text-[#004AAD] font-semibold" : "text-slate-600 hover:text-[#004AAD]"
+                      )}
+                    >
+                      <span>{link.label}</span>
+                      {link.soon && (
+                        <span className="text-[9px] font-bold uppercase tracking-wide text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
+                          Soon
+                        </span>
+                      )}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Industries */}
+            <div className="rounded-xl overflow-hidden">
+              <button
+                type="button"
+                onClick={() => toggleMobileSection("industries")}
+                className={cn(
+                  "w-full flex items-center justify-between px-3 py-3.5 rounded-xl text-left transition-colors",
+                  mobileOpenSection === "industries" ? "bg-[#004AAD]/8 text-[#004AAD]" : "text-slate-900 hover:bg-slate-50"
+                )}
+                aria-expanded={mobileOpenSection === "industries"}
+              >
+                <span className="text-[15px] font-bold">Industries</span>
+                <ChevronDown
+                  className={cn(
+                    "h-4 w-4 shrink-0 transition-transform duration-200",
+                    mobileOpenSection === "industries" && "rotate-180 text-[#004AAD]"
+                  )}
+                />
+              </button>
+              {mobileOpenSection === "industries" && (
+                <div className="px-2 pb-3 space-y-0.5">
+                  <Link to="/industries" onClick={() => setMobileDrawerOpen(false)} className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-[#004AAD] hover:bg-blue-50">
+                    All industries
                   </Link>
+                  {[
+                    { to: "/industries/banking-financial", label: "Banking & Finance" },
+                    { to: "/industries/communications", label: "Communications" },
+                    { to: "/industries/manufacturing", label: "Manufacturing" },
+                    { to: "/industries/retail-consumer", label: "Retail & Goods" },
+                  ].map((link) => (
+                    <Link
+                      key={link.to}
+                      to={link.to}
+                      onClick={() => setMobileDrawerOpen(false)}
+                      className="block px-3 py-2.5 rounded-lg text-sm text-slate-600 hover:bg-slate-50 hover:text-[#004AAD]"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
-              </div>
+              )}
+            </div>
 
-              {/* Industries */}
-              <div className="pb-3 border-b border-slate-100">
-                <Link
-                  to="/industries"
-                  onClick={() => setMobileDrawerOpen(false)}
-                  className="flex items-center justify-between py-1 text-base font-bold text-[#0f172a] hover:text-[#004AAD]"
-                >
-                  <span>Industries</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <div className="grid grid-cols-2 gap-1.5 pt-1.5 text-xs text-slate-600">
-                  <Link to="/industries/banking-financial" onClick={() => setMobileDrawerOpen(false)}>Banking & Finance</Link>
-                  <Link to="/industries/communications" onClick={() => setMobileDrawerOpen(false)}>Communications</Link>
-                  <Link to="/industries/manufacturing" onClick={() => setMobileDrawerOpen(false)}>Manufacturing</Link>
-                  <Link to="/industries/retail-consumer" onClick={() => setMobileDrawerOpen(false)}>Retail & Goods</Link>
+            {/* Insights */}
+            <div className="rounded-xl overflow-hidden">
+              <button
+                type="button"
+                onClick={() => toggleMobileSection("insights")}
+                className={cn(
+                  "w-full flex items-center justify-between px-3 py-3.5 rounded-xl text-left transition-colors",
+                  mobileOpenSection === "insights" ? "bg-[#004AAD]/8 text-[#004AAD]" : "text-slate-900 hover:bg-slate-50"
+                )}
+                aria-expanded={mobileOpenSection === "insights"}
+              >
+                <span className="text-[15px] font-bold">Insights</span>
+                <ChevronDown
+                  className={cn(
+                    "h-4 w-4 shrink-0 transition-transform duration-200",
+                    mobileOpenSection === "insights" && "rotate-180 text-[#004AAD]"
+                  )}
+                />
+              </button>
+              {mobileOpenSection === "insights" && (
+                <div className="px-2 pb-3 space-y-0.5">
+                  <Link to="/insights" onClick={() => setMobileDrawerOpen(false)} className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-[#004AAD] hover:bg-blue-50">
+                    All insights
+                  </Link>
+                  {[
+                    { to: "/insights/designathon-2026-hyderabad-uiux-hackathon-workshop", label: "Designathon 2026", accent: true },
+                    { to: "/insights/codestars-2k26-national-hackathon-hyderabad", label: "Code Stars 2K26", accent: true },
+                    { to: "/insights/audisankara-university-codesprint-2026-hackathon", label: "Audisankara Codesprint", accent: true },
+                    { to: "/insights/software-engineering", label: "Software Engineering" },
+                    { to: "/insights/ai-machine-learning", label: "AI & Machine Learning" },
+                    { to: "/insights/cloud-infrastructure", label: "Cloud & Infrastructure" },
+                    { to: "/insights/digital-platforms", label: "Digital Platforms" },
+                    { to: "/insights/business-technology", label: "Business Technology" },
+                    { to: "/insights/technology-consulting", label: "Tech Consulting" },
+                  ].map((link) => (
+                    <Link
+                      key={link.to}
+                      to={link.to}
+                      onClick={() => setMobileDrawerOpen(false)}
+                      className={cn(
+                        "block px-3 py-2.5 rounded-lg text-sm hover:bg-slate-50",
+                        link.accent ? "text-[#004AAD] font-semibold" : "text-slate-600 hover:text-[#004AAD]"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
-              </div>
+              )}
+            </div>
 
-              {/* Insights */}
-              <div className="pb-3 border-b border-slate-100">
-                <Link
-                  to="/insights"
-                  onClick={() => setMobileDrawerOpen(false)}
-                  className="flex items-center justify-between py-1 text-base font-bold text-[#0f172a] hover:text-[#004AAD]"
-                >
-                  <span>Insights & Articles</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <div className="grid grid-cols-2 gap-1.5 pt-1.5 text-xs text-slate-600">
-                  <Link to="/insights/designathon-2026-hyderabad-uiux-hackathon-workshop" onClick={() => setMobileDrawerOpen(false)} className="text-[#004AAD] font-bold col-span-2">Designathon 2026: UI/UX Hackathon</Link>
-                  <Link to="/insights/codestars-2k26-national-hackathon-hyderabad" onClick={() => setMobileDrawerOpen(false)} className="text-[#004AAD] font-bold col-span-2">Code Stars 2K26 Hackathon (Hyderabad)</Link>
-                  <Link to="/insights/audisankara-university-codesprint-2026-hackathon" onClick={() => setMobileDrawerOpen(false)} className="text-[#004AAD] font-bold col-span-2">Audisankara Codesprint 2026</Link>
-                  <Link to="/insights/software-engineering" onClick={() => setMobileDrawerOpen(false)}>Software Engineering</Link>
-                  <Link to="/insights/ai-machine-learning" onClick={() => setMobileDrawerOpen(false)}>AI & Machine Learning</Link>
-                  <Link to="/insights/cloud-infrastructure" onClick={() => setMobileDrawerOpen(false)}>Cloud & Infrastructure</Link>
-                  <Link to="/insights/digital-platforms" onClick={() => setMobileDrawerOpen(false)}>Digital Platforms</Link>
-                  <Link to="/insights/business-technology" onClick={() => setMobileDrawerOpen(false)}>Business Technology</Link>
-                  <Link to="/insights/technology-consulting" onClick={() => setMobileDrawerOpen(false)}>Tech Consulting</Link>
-                </div>
-              </div>
+            {/* Careers — direct link */}
+            <Link
+              to="/careers"
+              onClick={() => setMobileDrawerOpen(false)}
+              className="flex items-center justify-between px-3 py-3.5 rounded-xl text-[15px] font-bold text-slate-900 hover:bg-slate-50"
+            >
+              <span>Careers</span>
+              <ArrowRight className="h-4 w-4 text-slate-400" />
+            </Link>
+          </nav>
 
-              {/* Careers */}
-              <div>
-                <Link
-                  to="/careers"
-                  onClick={() => setMobileDrawerOpen(false)}
-                  className="flex items-center justify-between py-1 text-base font-bold text-[#0f172a] hover:text-[#004AAD]"
-                >
-                  <span>Careers</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </nav>
-          </div>
-
-          <div className="pt-5 border-t border-slate-100">
+          <div className="shrink-0 px-5 py-4 border-t border-slate-100 bg-white">
             <Link
               to="/contact"
               onClick={() => setMobileDrawerOpen(false)}
-              className="w-full py-3.5 px-4 rounded-xl bg-[#004AAD] hover:bg-[#003B8A] text-white text-base font-bold shadow-md transition-all text-center cursor-pointer outline-none focus:outline-none block"
+              className="w-full py-3.5 px-4 rounded-xl bg-[#004AAD] hover:bg-[#003B8A] text-white text-sm font-bold shadow-md transition-all text-center block"
             >
               Contact Us
             </Link>
